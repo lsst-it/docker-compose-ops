@@ -50,7 +50,7 @@ services:
         entrypoint: ["/home/saluser/.setup.sh"]
 
     ataos-sim:
-        image: lsstts/ataos:v1.0.0
+        image: lsstts/ataos:DM-19890
         container_name: ataos-sim
         environment:
             - OSPL_URI=${OSPL_URI}
