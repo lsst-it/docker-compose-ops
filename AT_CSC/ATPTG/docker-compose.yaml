@@ -1,0 +1,11 @@
+version: '3.6'
+services:
+  atptg:
+    image: tiagorib/ptkernel:DM-19890
+    container_name: atptg
+    environment:
+      - OSPL_URI=${OSPL_URI}
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    network_mode: "host"
+    volumes:
+      - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
