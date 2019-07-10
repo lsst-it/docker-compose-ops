@@ -5,6 +5,7 @@ services:
                 image: lsstts/efd_writers
                 volumes:
                         - ./efd_population.sh:/home/saluser/efd_population.sh
+                network_mode: "host"
                 entrypoint: ["/home/saluser/efd_population.sh"]
 
         EFD_MariaDB:
@@ -17,6 +18,7 @@ services:
                         - MYSQL_USER=efduser
                         - MYSQL_PASSWORD=lssttest
                 restart: on-failure
+                network_mode: "host"
                 #volumes:
                         #- ${PWD}/mariadb:/var/lib/mysql
         EFD_ATDome:

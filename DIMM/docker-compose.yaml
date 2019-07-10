@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+        dimm:
+                image: lsstts/dimm:DM-19900
+                environment:
+                        - OSPL_URI=${OSPL_URI}
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                network_mode: "host"
+                container_name: dimm
+                volumes:
+                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+                        - ./config.yaml:/home/saluser/repos/ts_dimm/python/lsst/ts/dimm/config/config.yaml

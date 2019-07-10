@@ -16,9 +16,5 @@ setup ts_salobj -t current
 setup ts_scriptqueue -t current
 setup ts_salobjATHexapod -t current
 cd /home/saluser/repos/ts_salobjATHexapod/bin/
-while :
-    do
-        echo "# Starting CSC"
-        python ./runATHexapodCSC.py 0
-	echo "# CSC finished..."
-done
+echo "# Starting CSC"
+python ./runATHexapodCSC.py 0
