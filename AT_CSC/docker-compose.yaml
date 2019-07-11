@@ -1,0 +1,59 @@
+version: '3.6'
+
+services:
+
+  atptg:
+    image: tiagorib/ptkernel:rc0.5_sal3.9
+    container_name: atptg
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.211"
+
+  atdome-csc:
+    image: lsstts/at_dome:3.9-0.5
+    container_name: atdome
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.212"
+
+  atdometrajectory-sim:
+    image: lsstts/at_dome_trajectory_sim:3.9-0.6a
+    container_name: atdometrajectory
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.213"
+
+  HexapodCSC:
+    image: lsstts/ts_athexapod:3.9-dm-19762
+    container_name: athexapod
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.214"
+    volumes:
+      - ./ATHexapod/startCSC.sh:/home/saluser/startCSC.sh
+      - ./ATHexapod/tcpConfiguration.yaml:/home/saluser/repos/ts_salobjATHexapod/bin/settingFiles/Test/1/tcpConfiguration.yaml
+    entrypoint: ["/home/saluser/startCSC.sh"]
+
+  ataos:
+    image: lsstts/ataos:DM-19890
+    container_name: ataos
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.215"
+
+networks:
+  default:
+    external:
+      name: control-network
+  control-network:
+    external: true
