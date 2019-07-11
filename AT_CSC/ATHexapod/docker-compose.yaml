@@ -2,9 +2,10 @@ version: "3"
 
 services:
         HexapodCSC:
-                image: lsstts/ts_athexapod
+                image: lsstts/ts_athexapod:3.9-dm-19762
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - OSPL_URI=${OSPL_URI}
                 network_mode: "host"
                 volumes:
                         - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
@@ -12,10 +13,10 @@ services:
                         - ./tcpConfiguration.yaml:/home/saluser/repos/ts_salobjATHexapod/bin/settingFiles/Test/1/tcpConfiguration.yaml
                 entrypoint: ["/home/saluser/startCSC.sh"]
         HexapodGUI:
-                image: lsstts/ts_athexapod
+                image: lsstts/ts_athexapod:3.9-dm-19762
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
-                        - DISPLAY=139.229.136.136:0
+                        - DISPLAY=192.168.1.51:0
                 network_mode: "host"
                 volumes:
                         - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
