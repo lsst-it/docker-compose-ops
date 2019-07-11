@@ -100,4 +100,47 @@ services:
                         - ./ospl.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATAOS" , "efdwriter"]
- 
+        EFD_DIMM:
+                image: lsstts/ts_efd_writer
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                network_mode: "host"
+                volumes:
+                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+                        - ./dimm_setup.sh:/home/saluser/dimm_setup.sh
+                entrypoint: ["/home/saluser/dimm_setup.sh"]
+        EFD_DIMM_command:
+                image: lsstts/ts_efd_writer
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                network_mode: "host"
+                volumes:
+                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+                        - ./dimm_command_setup.sh:/home/saluser/dimm_command_setup.sh
+                entrypoint: ["/home/saluser/dimm_command_setup.sh"]
+        EFD_DIMM_event:
+                image: lsstts/ts_efd_writer
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                network_mode: "host"
+                volumes:
+                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+                        - ./dimm_event_setup.sh:/home/saluser/dimm_event_setup.sh
+                entrypoint: ["/home/saluser/dimm_event_setup.sh"]
+        EFD_DIMM_telemetry:
+                image: lsstts/ts_efd_writer
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                network_mode: "host"
+                volumes:
+                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+                        - ./dimm_telemetry_setup.sh:/home/saluser/dimm_telemetry_setup.sh
+                entrypoint: ["/home/saluser/dimm_telemetry_setup.sh"]
