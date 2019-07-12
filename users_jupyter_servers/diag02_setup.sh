@@ -2,6 +2,7 @@
 
 # Source this file when starting the container to set it up
 
+. ~/.bash_profile
 echo "#"
 echo "# Loading sal environment"
 . repos/ts_sal/setup.env
@@ -20,4 +21,4 @@ setup ts_scriptqueue -t current
 echo "#"
 echo "# Starting jupyter lab server"
 
-jupyter lab --ip 192.168.1.202 --port 8885
+jupyter lab --ip 192.168.1.202 --port 8885 --no-browser
