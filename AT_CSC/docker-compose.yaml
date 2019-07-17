@@ -3,7 +3,7 @@ version: '3.6'
 services:
 
   atptg:
-    image: tiagorib/ptkernel:rc0.5_sal3.9
+    image: tiagorib/ptkernel:rc0.5_sal3.10
     container_name: atptg
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
