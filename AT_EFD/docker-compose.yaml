@@ -16,13 +16,13 @@ services:
                         - MYSQL_USER=efduser
                         - MYSQL_PASSWORD=lssttest
                 volumes:
-                        - ${HOME}/efd/mysql:/var/lib/mysql
+                        - ${HOME}/efd_xml_v3.10.2/mysql:/var/lib/mysql
                 networks:
                         control-network:
                                 ipv4_address: "192.168.1.2"
 
         EFD_ATDome:
-                image: lsstts/efd_writers:DM-20529
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
@@ -35,7 +35,7 @@ services:
                 entrypoint: ["/home/saluser/efd_writers.sh", "ATDome", "efdwriter"]
 
         EFD_ATHexapod:
-                image: lsstts/efd_writers:DM-20529
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
@@ -48,7 +48,7 @@ services:
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATHexapod" , "efdwriter"]
 
         EFD_ATMCS:
-                image: lsstts/efd_writers:20190514
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
@@ -60,7 +60,7 @@ services:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATMCS" , "efdwriter"]
         EFD_ATptg:
-                image: lsstts/efd_writers:20190514
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
@@ -72,7 +72,7 @@ services:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATPtg" , "efdwriter"]
         EFD_ATDomeTrajectory:
-                image: lsstts/efd_writers:20190514
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
@@ -84,7 +84,7 @@ services:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATDomeTrajectory" , "efdwriter"]
         EFD_ATPneumatics:
-                image: lsstts/efd_writers:20190514
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
@@ -97,7 +97,7 @@ services:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATPneumatics" , "efdwriter"]
         EFD_ATAOS:
-                image: lsstts/efd_writers:20190514
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
@@ -109,7 +109,7 @@ services:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATAOS" , "efdwriter"]
         EFD_DIMM:
-                image: lsstts/efd_writers:DM-20529
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
@@ -121,7 +121,7 @@ services:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "DIMM" , "efdwriter"]
         EFD_Scripts:
-                image: lsstts/efd_writers:DM-20529
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
@@ -134,7 +134,7 @@ services:
                 entrypoint: ["/home/saluser/efd_writers.sh" , "Scripts" , "efdwriter"]
 
         EFD_ScriptQueue:
-                image: lsstts/efd_writers:DM-20529
+                image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
