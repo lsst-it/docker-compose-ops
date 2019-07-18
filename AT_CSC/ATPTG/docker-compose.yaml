@@ -6,6 +6,15 @@ services:
     environment:
       - OSPL_URI=${OSPL_URI}
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
-    network_mode: "host"
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.203"
     volumes:
       - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+
+networks:
+  default:
+    external:
+      name: control-network
+  control-network:
+    external: true

@@ -1,103 +1,154 @@
-version: "3"
+version: '3.6'
 
 services:
-        EFD_Updater:
-                image: lsstts/efd_writers
-                volumes:
-                        - ./efd_population.sh:/home/saluser/efd_population.sh
-                network_mode: "host"
-                entrypoint: ["/home/saluser/efd_population.sh"]
+#        EFD_Updater:
+#                image: lsstts/efd_writers
+#                volumes:
+#                        - ./efd_population.sh:/home/saluser/efd_population.sh
+#                network_mode: "host"
+#                entrypoint: ["/home/saluser/efd_population.sh"]
 
         EFD_MariaDB:
                 image: mariadb:latest
-                ports: 
-                        - "3306:3306"
                 environment:
                         - MYSQL_ROOT_PASSWORD=lssttest
                         - MYSQL_DATABASE=EFD
                         - MYSQL_USER=efduser
                         - MYSQL_PASSWORD=lssttest
-                restart: on-failure
-                network_mode: "host"
-                #volumes:
-                        #- ${PWD}/mariadb:/var/lib/mysql
+                volumes:
+                        - ${HOME}/efd/mysql:/var/lib/mysql
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.2"
+
         EFD_ATDome:
-                image: lsstts/efd_writers
+                image: lsstts/efd_writers:DM-20529
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
                         - LSST_KAFKA_BROKERS=localhost
-                network_mode: "host"
                 volumes:
-                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.3"
                 entrypoint: ["/home/saluser/efd_writers.sh", "ATDome", "efdwriter"]
+
         EFD_ATHexapod:
-                image: lsstts/efd_writers
+                image: lsstts/efd_writers:DM-20529
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
                         - LSST_KAFKA_BROKERS=localhost
-                network_mode: "host"
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.4"
                 volumes:
-                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATHexapod" , "efdwriter"]
 
         EFD_ATMCS:
-                image: lsstts/efd_writers
+                image: lsstts/efd_writers:20190514
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
                         - LSST_KAFKA_BROKERS=localhost
-                network_mode: "host"
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.6"
                 volumes:
-                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATMCS" , "efdwriter"]
         EFD_ATptg:
-                image: lsstts/efd_writers
+                image: lsstts/efd_writers:20190514
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
                         - LSST_KAFKA_BROKERS=localhost
-                network_mode: "host"
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.7"
                 volumes:
-                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATPtg" , "efdwriter"]
         EFD_ATDomeTrajectory:
-                image: lsstts/efd_writers
+                image: lsstts/efd_writers:20190514
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
                         - LSST_KAFKA_BROKERS=localhost
-                network_mode: "host"
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.8"
                 volumes:
-                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATDomeTrajectory" , "efdwriter"]
         EFD_ATPneumatics:
-                image: lsstts/efd_writers
+                image: lsstts/efd_writers:20190514
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
                         - LSST_KAFKA_BROKERS=localhost
-                network_mode: "host"
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.9"
                 volumes:
                         - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATPneumatics" , "efdwriter"]
         EFD_ATAOS:
-                image: lsstts/efd_writers
+                image: lsstts/efd_writers:20190514
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
                         - LSST_EFD_HOST=${LSST_EFD_HOST}
                         - LSST_KAFKA_BROKERS=localhost
-                network_mode: "host"
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.10"
                 volumes:
-                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
-                        - ./ospl.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
                 entrypoint: ["/home/saluser/efd_writers.sh" , "ATAOS" , "efdwriter"]
- 
+        EFD_DIMM:
+                image: lsstts/efd_writers:DM-20529
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.11"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "DIMM" , "efdwriter"]
+        EFD_Scripts:
+                image: lsstts/efd_writers:DM-20529
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.12"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "Scripts" , "efdwriter"]
+
+        EFD_ScriptQueue:
+                image: lsstts/efd_writers:DM-20529
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.13"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ScriptQueue" , "efdwriter"]
+
+networks:
+  default:
+    external:
+      name: control-network
+  control-network:
+    external: true
