@@ -23,4 +23,4 @@ echo $LSST_DDS_DOMAIN
 
 export LSST_EFD_HOST
 
-./repos/ts_sal/test/${CSC}/cpp/src/sacpp_${CSC}_${STREAMTYPE}_${DBTYPE} &> /dev/null &
+./repos/ts_sal/test/${CSC}/cpp/src/sacpp_${CSC}_${STREAMTYPE}_${DBTYPE}
