@@ -14,13 +14,13 @@ setup ts_xml -t current
 setup ts_sal -t current
 
 CSC=$1	# CSC name
-DBTYPE=$2	# influxwriter, efdwriter, kafkawriter
+STREAMTYPE=$2
+DBTYPE=$3	# influxwriter, efdwriter, kafkawriter
+
 
 echo $LSST_EFD_HOST
 echo $LSST_DDS_DOMAIN
 
 export LSST_EFD_HOST
 
-./repos/ts_sal/test/${CSC}/cpp/src/sacpp_${CSC}_command_${DBTYPE} &> /dev/null &
-./repos/ts_sal/test/${CSC}/cpp/src/sacpp_${CSC}_event_${DBTYPE} &> /dev/null &
-./repos/ts_sal/test/${CSC}/cpp/src/sacpp_${CSC}_telemetry_${DBTYPE} &> /dev/null
+./repos/ts_sal/test/${CSC}/cpp/src/sacpp_${CSC}_${STREAMTYPE}_${DBTYPE}

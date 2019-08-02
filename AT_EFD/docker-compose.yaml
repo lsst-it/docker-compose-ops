@@ -21,7 +21,7 @@ services:
                         control-network:
                                 ipv4_address: "192.168.1.2"
 
-        EFD_ATDome:
+        EFD_ATDome_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -32,9 +32,35 @@ services:
                 networks:
                         control-network:
                                 ipv4_address: "192.168.1.3"
-                entrypoint: ["/home/saluser/efd_writers.sh", "ATDome", "efdwriter"]
+                entrypoint: ["/home/saluser/efd_writers.sh", "ATDome", "command", "efdwriter"]
+        
+        EFD_ATDome_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.14"
+                entrypoint: ["/home/saluser/efd_writers.sh", "ATDome", "event", "efdwriter"]
 
-        EFD_ATHexapod:
+        EFD_ATDome_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.15"
+                entrypoint: ["/home/saluser/efd_writers.sh", "ATDome", "telemetry", "efdwriter"]
+
+        EFD_ATHexapod_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -45,9 +71,36 @@ services:
                                 ipv4_address: "192.168.1.4"
                 volumes:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
-                entrypoint: ["/home/saluser/efd_writers.sh" , "ATHexapod" , "efdwriter"]
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATHexapod", "command" , "efdwriter"]
 
-        EFD_ATMCS:
+        EFD_ATHexapod_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.16"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATHexapod", "event" , "efdwriter"]
+
+        EFD_ATHexapod_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.17"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATHexapod", "telemetry" , "efdwriter"]
+
+
+        EFD_ATMCS_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -58,8 +111,35 @@ services:
                                 ipv4_address: "192.168.1.6"
                 volumes:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
-                entrypoint: ["/home/saluser/efd_writers.sh" , "ATMCS" , "efdwriter"]
-        EFD_ATptg:
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATMCS", "command" , "efdwriter"]
+
+        EFD_ATMCS_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.18"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATMCS", "event" , "efdwriter"]
+
+        EFD_ATMCS_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.19"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATMCS", "telemetry" , "efdwriter"]
+        
+        EFD_ATptg_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -70,8 +150,35 @@ services:
                                 ipv4_address: "192.168.1.7"
                 volumes:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
-                entrypoint: ["/home/saluser/efd_writers.sh" , "ATPtg" , "efdwriter"]
-        EFD_ATDomeTrajectory:
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATPtg", "command" , "efdwriter"]
+
+        EFD_ATptg_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.35"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATPtg", "event" , "efdwriter"]
+        
+        EFD_ATptg_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.20"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATPtg", "telemetry" , "efdwriter"]
+
+        EFD_ATDomeTrajectory_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -82,8 +189,35 @@ services:
                                 ipv4_address: "192.168.1.8"
                 volumes:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
-                entrypoint: ["/home/saluser/efd_writers.sh" , "ATDomeTrajectory" , "efdwriter"]
-        EFD_ATPneumatics:
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATDomeTrajectory", "command" , "efdwriter"]
+
+        EFD_ATDomeTrajectory_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.22"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATDomeTrajectory", "event" , "efdwriter"]
+
+        EFD_ATDomeTrajectory_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.23"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATDomeTrajectory", "telemetry" , "efdwriter"]
+
+        EFD_ATPneumatics_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -95,8 +229,37 @@ services:
                 volumes:
                         - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
-                entrypoint: ["/home/saluser/efd_writers.sh" , "ATPneumatics" , "efdwriter"]
-        EFD_ATAOS:
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATPneumatics", "command" , "efdwriter"]
+
+        EFD_ATPneumatics_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.24"
+                volumes:
+                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATPneumatics", "event" , "efdwriter"]
+
+        EFD_ATPneumatics_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.25"
+                volumes:
+                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATPneumatics", "telemetry" , "efdwriter"]
+
+        EFD_ATAOS_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -107,8 +270,35 @@ services:
                                 ipv4_address: "192.168.1.10"
                 volumes:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
-                entrypoint: ["/home/saluser/efd_writers.sh" , "ATAOS" , "efdwriter"]
-        EFD_DIMM:
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATAOS", "command" , "efdwriter"]
+
+        EFD_ATAOS_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.26"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATAOS", "event" , "efdwriter"]
+
+        EFD_ATAOS_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.27"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ATAOS", "telemetry" , "efdwriter"]
+        
+        EFD_DIMM_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -119,8 +309,35 @@ services:
                                 ipv4_address: "192.168.1.11"
                 volumes:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
-                entrypoint: ["/home/saluser/efd_writers.sh" , "DIMM" , "efdwriter"]
-        EFD_Scripts:
+                entrypoint: ["/home/saluser/efd_writers.sh" , "DIMM", "command" , "efdwriter"]
+
+        EFD_DIMM_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.28"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "DIMM", "event" , "efdwriter"]
+
+        EFD_DIMM_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.29"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "DIMM", "telemetry" , "efdwriter"]
+        
+        EFD_Scripts_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -131,9 +348,36 @@ services:
                                 ipv4_address: "192.168.1.12"
                 volumes:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
-                entrypoint: ["/home/saluser/efd_writers.sh" , "Scripts" , "efdwriter"]
+                entrypoint: ["/home/saluser/efd_writers.sh" , "Scripts", "command" , "efdwriter"]
 
-        EFD_ScriptQueue:
+        EFD_Scripts_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.30"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "Scripts", "event" , "efdwriter"]
+
+        EFD_Scripts_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.32"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "Scripts", "telemetry" , "efdwriter"]
+
+
+        EFD_ScriptQueue_command:
                 image: lsstts/efd_writers:DM-20584
                 environment:
                         - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -144,7 +388,33 @@ services:
                                 ipv4_address: "192.168.1.13"
                 volumes:
                         - ./efd_writers.sh:/home/saluser/efd_writers.sh
-                entrypoint: ["/home/saluser/efd_writers.sh" , "ScriptQueue" , "efdwriter"]
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ScriptQueue", "command" , "efdwriter"]
+        
+        EFD_ScriptQueue_event:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.33"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ScriptQueue", "event" , "efdwriter"]
+        
+        EFD_ScriptQueue_telemetry:
+                image: lsstts/efd_writers:DM-20584
+                environment:
+                        - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+                        - LSST_EFD_HOST=${LSST_EFD_HOST}
+                        - LSST_KAFKA_BROKERS=localhost
+                networks:
+                        control-network:
+                                ipv4_address: "192.168.1.34"
+                volumes:
+                        - ./efd_writers.sh:/home/saluser/efd_writers.sh
+                entrypoint: ["/home/saluser/efd_writers.sh" , "ScriptQueue", "telemetry" , "efdwriter"]
 
 networks:
   default:
