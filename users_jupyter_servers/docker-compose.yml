@@ -3,7 +3,7 @@ version: "3.4"
 services:
 
   diag01:
-    image: lsstts/develop-env:20190610_sal3.10.0_salobj3.12.0
+    image: lsstts/develop-env:salobj4_b38
     container_name: diag01
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -18,7 +18,7 @@ services:
         ipv4_address: "192.168.1.201"
 
   diag02:
-    image: lsstts/develop-env:20190610_sal3.10.0_salobj3.12.0
+    image: lsstts/develop-env:salobj4_b38
     container_name: diag02
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -33,7 +33,7 @@ services:
         ipv4_address: "192.168.1.202"
 
   diag03:
-    image: lsstts/develop-env:20190705_sal3.10.0_salobj
+    image: lsstts/develop-env:salobj4_b38
     container_name: diag03
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -46,6 +46,21 @@ services:
     networks:
       control-network:
         ipv4_address: "192.168.1.203"
+
+  diag04:
+    image: lsstts/develop-env:salobj4_b38
+    container_name: diag04
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag04:/home/saluser/develop
+      - ./diag04_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag04_setup.sh:/home/saluser/.setup.sh
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.204"
 
 networks:
   default:

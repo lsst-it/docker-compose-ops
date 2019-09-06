@@ -3,7 +3,7 @@ version: '3.6'
 services:
 
   atptg:
-    image: tiagorib/ptkernel:rc0.5_sal3.10
+    image: tiagorib/ptkernel:v1.1rev0_xml4.2rev0_sal3.10
     container_name: atptg
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -11,8 +11,8 @@ services:
       control-network:
         ipv4_address: "192.168.1.211"
 
-  atdome-csc:
-    image: lsstts/at_dome:v0.6.1
+  atdome:
+    image: lsstts/at_dome:v0.7.0
     container_name: atdome
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -21,7 +21,7 @@ services:
         ipv4_address: "192.168.1.212"
 
   atdometrajectory:
-    image: lsstts/at_dome_trajectory:v0.8.1
+    image: lsstts/at_dome_trajectory:v1.0.0
     container_name: atdometrajectory
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -29,8 +29,8 @@ services:
       control-network:
         ipv4_address: "192.168.1.213"
 
-  HexapodCSC:
-    image: lsstts/ts_athexapod:v0.2.0
+  athexapod:
+    image: lsstts/ts_athexapod:v0.2.0_xmlv4.2rev0_sal3.10.0_salobj3.12.0
     container_name: athexapod
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -43,7 +43,7 @@ services:
     entrypoint: ["/home/saluser/startCSC.sh"]
 
   ataos:
-    image: lsstts/ataos:v1.1.0
+    image: lsstts/ataos:v1.2.0
     container_name: ataos
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
