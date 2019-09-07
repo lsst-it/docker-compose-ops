@@ -6,7 +6,7 @@ echo "# Loading LSST Stack"
 setup lsst_distrib
 echo "#"
 echo "# Loading sal environment"
-. repos/ts_sal/setup.env
+. /home/saluser/repos/ts_sal/setup.env
 echo "#"
 echo "# Setting up sal, salobj and scriptqueue"
 
@@ -16,6 +16,7 @@ setup ts_salobj -t current
 setup ts_scriptqueue -t current
 setup ts_salobjATHexapod -t current
 cd /home/saluser/repos/ts_salobjATHexapod/bin/
+
 while :
     do
         echo "# Starting CSC"
