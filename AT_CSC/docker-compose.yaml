@@ -11,8 +11,8 @@ services:
       control-network:
         ipv4_address: "192.168.1.211"
 
-  atdome:
-    image: lsstts/at_dome:v0.7.0
+  atdome-csc:
+    image: lsstts/at_dome:v0.6.1
     container_name: atdome
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -21,7 +21,7 @@ services:
         ipv4_address: "192.168.1.212"
 
   atdometrajectory:
-    image: lsstts/at_dome_trajectory:v1.0.0
+    image: lsstts/at_dome_trajectory:v0.8.1
     container_name: atdometrajectory
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
