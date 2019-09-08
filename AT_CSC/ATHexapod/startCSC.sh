@@ -20,6 +20,6 @@ cd /home/saluser/repos/ts_salobjATHexapod/bin/
 while :
     do
         echo "# Starting CSC"
-        python ./runATHexapodCSC.py 0
+        python ./runATHexapodCSC.py
 	echo "# CSC finished..."
 done

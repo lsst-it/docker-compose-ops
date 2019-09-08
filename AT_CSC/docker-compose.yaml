@@ -43,7 +43,7 @@ services:
     entrypoint: ["/home/saluser/startCSC.sh"]
 
   ataos:
-    image: lsstts/ataos:v1.2.0
+    image: lsstts/ataos:DM-21161_2
     container_name: ataos
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
