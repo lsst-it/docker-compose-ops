@@ -62,6 +62,37 @@ services:
       control-network:
         ipv4_address: "192.168.1.204"
 
+  diag05:
+    image: lsstts/develop-env:salobj4_b38
+    container_name: diag05
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag05:/home/saluser/develop
+      - ./diag05_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag05_setup.sh:/home/saluser/.setup.sh
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.205"
+
+  diag06:
+    image: lsstts/develop-env:salobj4_b38
+    container_name: diag06
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag06:/home/saluser/develop
+      - ./diag06_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag06_setup.sh:/home/saluser/.setup.sh
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.206"
+
+
 networks:
   default:
     external:
