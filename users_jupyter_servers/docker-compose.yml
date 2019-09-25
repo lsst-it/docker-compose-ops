@@ -11,9 +11,11 @@ services:
       - $HOME/develop_diag01:/home/saluser/develop
       - ./diag01_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag01_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_201.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
     tty: true
     networks:
+      bridge:
       control-network:
         ipv4_address: "192.168.1.201"
 
@@ -26,6 +28,7 @@ services:
       - $HOME/develop_diag02:/home/saluser/develop
       - ./diag02_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag02_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_202.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
     tty: true
     networks:
@@ -41,6 +44,7 @@ services:
       - $HOME/develop_diag03:/home/saluser/develop
       - ./diag03_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag03_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_203.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
     tty: true
     networks:
@@ -56,6 +60,7 @@ services:
       - $HOME/develop_diag04:/home/saluser/develop
       - ./diag04_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag04_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_204.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
     tty: true
     networks:
@@ -71,6 +76,7 @@ services:
       - $HOME/develop_diag05:/home/saluser/develop
       - ./diag05_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag05_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_205.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
     tty: true
     networks:
@@ -86,6 +92,7 @@ services:
       - $HOME/develop_diag06:/home/saluser/develop
       - ./diag06_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag06_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_206.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
     tty: true
     networks:
@@ -99,3 +106,4 @@ networks:
       name: control-network
   control-network:
     external: true
+  bridge:
