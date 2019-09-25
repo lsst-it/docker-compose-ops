@@ -9,7 +9,7 @@ services:
                 network_mode: "host"
                 container_name: dimm
                 volumes:
-                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+                        - ./dimm_ospl.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
                         - ./config.yaml:/home/saluser/repos/ts_dimm/python/lsst/ts/dimm/config/config.yaml
         dimm_2:
                 image: lsstts/dimm:DM-19900
@@ -20,5 +20,5 @@ services:
                 network_mode: "host"
                 container_name: dimm_2
                 volumes:
-                        - ${OSPL_CONFIG_PATH}:${OSPL_MOUNT_POINT}
+                        - ./dimm_ospl.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
                         - ./config_2.yaml:/home/saluser/repos/ts_dimm/python/lsst/ts/dimm/config/config.yaml
