@@ -38,7 +38,7 @@ setting:
   lsst:
     type: 'astelco'
     configuration:
-      host: 192.168.1.200 
+      host: 192.168.1.199 
       port: 16500
       auto_auth: True
       user: admin
