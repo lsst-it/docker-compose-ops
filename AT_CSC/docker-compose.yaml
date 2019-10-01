@@ -10,6 +10,11 @@ services:
     networks:
       control-network:
         ipv4_address: "192.168.1.211"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
 
   atdome:
     image: lsstts/at_dome:DM-21161
@@ -19,6 +24,11 @@ services:
     networks:
       control-network:
         ipv4_address: "192.168.1.212"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
 
   atdometrajectory:
     image: lsstts/at_dome_trajectory:DM-21161
@@ -28,7 +38,11 @@ services:
     networks:
       control-network:
         ipv4_address: "192.168.1.213"
-
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
   athexapod:
     image: lsstts/ts_athexapod:v0.2.0_xmlv4.2rev0_sal3.10.0_salobj3.12.0
     container_name: athexapod
@@ -41,7 +55,11 @@ services:
       - ./ATHexapod/startCSC.sh:/home/saluser/startCSC.sh
       - ./ATHexapod/tcpConfiguration.yaml:/home/saluser/repos/ts_salobjATHexapod/bin/settingFiles/Test/1/tcpConfiguration.yaml
     entrypoint: ["/home/saluser/startCSC.sh"]
-
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
   ataos:
     image: lsstts/ataos:DM-21161_2
     container_name: ataos
@@ -50,7 +68,11 @@ services:
     networks:
       control-network:
         ipv4_address: "192.168.1.215"
-
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
 networks:
   default:
     external:
