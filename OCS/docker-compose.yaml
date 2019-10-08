@@ -3,12 +3,10 @@ version: '3.6'
 services:
 
   environment:
-    image: lsstts/environment:v0.1.3_xml4.2rev0
+    image: lsstts/environment:DM-21034
     container_name: environment
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
-    volumes:
-      - ./environment_config.yaml:/home/saluser/repos/ts_environment/python/lsst/ts/environment/config/config.yaml
     networks:
       control-network:
         ipv4_address: "192.168.1.220"
