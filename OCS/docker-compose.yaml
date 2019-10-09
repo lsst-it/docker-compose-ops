@@ -3,7 +3,7 @@ version: '3.6'
 services:
 
   environment:
-    image: lsstts/environment:DM-21034
+    image: lsstts/environment:v1.0.0
     container_name: environment
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
