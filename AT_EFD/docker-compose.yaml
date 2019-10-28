@@ -21,6 +21,11 @@ services:
       zbridge:
       control-network:
         ipv4_address: "192.168.1.2"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
 
   salkafka_atdome:
     image: lsstts/salkafka:v1.0b1_xml3.10.2
@@ -41,6 +46,37 @@ services:
       zbridge:
       control-network:
         ipv4_address: "192.168.1.3"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  salkafka_watcher:
+    image: lsstts/salkafka:v1.0b1_xmlv4.3.0_RC1
+    container_name: salkafka_watcher
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - BROKER_IP=summit-efd0.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://summit-registry-efd.lsst.codes
+      - REPLICATION=1
+      - LOG_LEVEL=10
+      - CSC_LIST=Watcher
+    volumes:
+      - $PWD/ospl_4.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+    stdin_open: true
+    tty: true
+    networks:
+      zbridge:
+      control-network:
+        ipv4_address: "192.168.1.4"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
 
 networks:
   default:
