@@ -1,0 +1,28 @@
+version: '3.6'
+
+services:
+
+  environment:
+    image: lsstts/environment:v1.0.0
+    container_name: environment
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.220"
+
+  watcher:
+    image: lsstts/watcher:v0.2.1
+    container_name: watcher
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.221"
+
+networks:
+  default:
+    external:
+      name: control-network
+  control-network:
+    external: true

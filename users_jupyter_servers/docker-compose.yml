@@ -3,7 +3,7 @@ version: "3.4"
 services:
 
   diag01:
-    image: lsstts/develop-env:20190610_sal3.10.0_salobj3.12.0
+    image: lsstts/develop-env:salobj4_b38
     container_name: diag01
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -11,14 +11,20 @@ services:
       - $HOME/develop_diag01:/home/saluser/develop
       - ./diag01_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag01_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_201.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
     tty: true
     networks:
+      bridge:
       control-network:
         ipv4_address: "192.168.1.201"
-
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
   diag02:
-    image: lsstts/develop-env:20190610_sal3.10.0_salobj3.12.0
+    image: lsstts/develop-env:salobj4_b38
     container_name: diag02
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -26,14 +32,19 @@ services:
       - $HOME/develop_diag02:/home/saluser/develop
       - ./diag02_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag02_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_202.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
     tty: true
     networks:
       control-network:
         ipv4_address: "192.168.1.202"
-
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
   diag03:
-    image: lsstts/develop-env:20190705_sal3.10.0_salobj
+    image: lsstts/develop-env:salobj4_b38
     container_name: diag03
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -41,11 +52,77 @@ services:
       - $HOME/develop_diag03:/home/saluser/develop
       - ./diag03_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag03_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_203.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
     tty: true
     networks:
       control-network:
         ipv4_address: "192.168.1.203"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+  diag04:
+    image: lsstts/develop-env:salobj4_b38
+    container_name: diag04
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag04:/home/saluser/develop
+      - ./diag04_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag04_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_204.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.204"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+  diag05:
+    image: lsstts/develop-env:salobj4_b38
+    container_name: diag05
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag05:/home/saluser/develop
+      - ./diag05_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag05_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_205.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.205"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+  diag06:
+    image: lsstts/develop-env:salobj4_b38
+    container_name: diag06
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag06:/home/saluser/develop
+      - ./diag06_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag06_setup.sh:/home/saluser/.setup.sh
+      - ./ospl_206.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "192.168.1.206"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
 
 networks:
   default:
@@ -53,3 +130,4 @@ networks:
       name: control-network
   control-network:
     external: true
+  bridge:
