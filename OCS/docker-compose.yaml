@@ -3,22 +3,33 @@ version: '3.6'
 services:
 
   environment:
-    image: lsstts/environment:v1.0.0
+    image: lsstts/environment:v1.0.0_sal_v4.0.0_salobj_v5.0.0
     container_name: environment
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
     networks:
       control-network:
-        ipv4_address: "192.168.1.220"
+        ipv4_address: "139.229.170.220"
 
-  watcher:
-    image: lsstts/watcher:v0.2.1
-    container_name: watcher
+  dimm:
+    image: lsstts/dimm:v0.2.0_sal_v4.0.0_salobj_v5.0.0
+    container_name: dimm
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - CSC_INDEX=1
     networks:
       control-network:
-        ipv4_address: "192.168.1.221"
+        ipv4_address: "139.229.170.219"
+
+
+#  watcher:
+#    image: lsstts/watcher:v0.2.1
+#    container_name: watcher
+#    environment:
+#      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+#    networks:
+#      control-network:
+#        ipv4_address: "139.229.170.221"
 
 networks:
   default:

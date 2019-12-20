@@ -3,7 +3,7 @@ version: "3.4"
 services:
 
   salkafka:
-    image: lsstts/salkafka:v1.0b1_xml4.2rev0
+    image: lsstts/salkafka:v1.0.0_salobj_v5.0.0_xml_v4.4.1
     container_name: salkafka_producer
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -12,7 +12,7 @@ services:
       - REGISTRY_ADDR=https://summit-registry-efd.lsst.codes
       - REPLICATION=1
       - LOG_LEVEL=10
-      - CSC_LIST=ATPtg ATHexapod ATMCS ATDomeTrajectory ATPneumatics ATAOS Environment DIMM GenericCamera ScriptQueue Script
+      - CSC_LIST=ATPtg ATHexapod ATMCS ATDomeTrajectory ATPneumatics ATAOS Environment DIMM GenericCamera ScriptQueue Script ATDome Watcher
     volumes:
       - $PWD/ospl_2.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
     stdin_open: true
@@ -20,57 +20,7 @@ services:
     networks:
       zbridge:
       control-network:
-        ipv4_address: "192.168.1.2"
-    logging:
-        driver: "json-file"
-        options:
-            max-file: "5"
-            max-size: "10m"
-
-  salkafka_atdome:
-    image: lsstts/salkafka:v1.0b1_xml3.10.2
-    container_name: salkafka_producer_atdome
-    environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
-      - BROKER_IP=summit-efd0.lsst.codes
-      - BROKER_PORT=31090
-      - REGISTRY_ADDR=https://summit-registry-efd.lsst.codes
-      - REPLICATION=1
-      - LOG_LEVEL=10
-      - CSC_LIST=ATDome
-    volumes:
-      - $PWD/ospl_3.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
-    stdin_open: true
-    tty: true
-    networks:
-      zbridge:
-      control-network:
-        ipv4_address: "192.168.1.3"
-    logging:
-        driver: "json-file"
-        options:
-            max-file: "5"
-            max-size: "10m"
-
-  salkafka_watcher:
-    image: lsstts/salkafka:v1.0b1_xmlv4.3.0_RC1
-    container_name: salkafka_watcher
-    environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
-      - BROKER_IP=summit-efd0.lsst.codes
-      - BROKER_PORT=31090
-      - REGISTRY_ADDR=https://summit-registry-efd.lsst.codes
-      - REPLICATION=1
-      - LOG_LEVEL=10
-      - CSC_LIST=Watcher
-    volumes:
-      - $PWD/ospl_4.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
-    stdin_open: true
-    tty: true
-    networks:
-      zbridge:
-      control-network:
-        ipv4_address: "192.168.1.4"
+        ipv4_address: "139.229.170.224"
     logging:
         driver: "json-file"
         options:
