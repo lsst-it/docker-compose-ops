@@ -142,6 +142,29 @@ services:
             max-file: "5"
             max-size: "10m"
 
+  # user: cslange
+  diag07:
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b26
+    container_name: diag07
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag07:/home/saluser/develop
+      - ./diag07_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag07_setup.sh:/home/saluser/.setup.sh
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.207"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
   firefly:
     image: ipac/firefly:lsst-dev
     container_name: firefly
