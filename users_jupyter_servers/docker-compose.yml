@@ -155,7 +155,7 @@ services:
     volumes:
       - /scratch
     networks:
-      lab-priv-network:
+      control-network:
         ipv4_address: "139.229.170.210"
 
 networks:
