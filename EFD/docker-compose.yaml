@@ -36,7 +36,7 @@ services:
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
       - LOG_LEVEL=10
-      - CSC_LIST=ATCamera ATHeaderService ATArchiver ATAOS Environment DIMM GenericCamera ScriptQueue Script ATDome Watcher
+      - CSC_LIST=ATCamera ATHeaderService ATArchiver ATSpectrograph ATAOS Environment DIMM GenericCamera ScriptQueue Script ATDome Watcher
     stdin_open: true
     tty: true
     networks:
