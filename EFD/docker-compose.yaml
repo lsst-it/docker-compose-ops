@@ -5,6 +5,7 @@ services:
   salkafka_producer_new:
     image: lsstts/salkafka:v1.0.0_salobj_v5.0.0_xml_v4.4.1
     container_name: salkafka_producer_new
+    user: 73006:73006
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
@@ -12,7 +13,7 @@ services:
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
       - LOG_LEVEL=10
-      - CSC_LIST=ATPtg ATHexapod ATMCS ATDomeTrajectory ATPneumatics ATAOS Environment DIMM GenericCamera ScriptQueue Script ATDome Watcher
+      - CSC_LIST=ATPtg ATMCS ATHexapod ATDomeTrajectory ATPneumatics
     stdin_open: true
     tty: true
     networks:
@@ -27,6 +28,7 @@ services:
   salkafka_producer_new_02:
     image: lsstts/salkafka:v1.0.0_salobj_v5.0.0_xml_v4.4.1
     container_name: salkafka_producer_new_02
+    user: 73006:73006
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
@@ -34,7 +36,7 @@ services:
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
       - LOG_LEVEL=10
-      - CSC_LIST=ATCamera ATHeaderService ATArchiver
+      - CSC_LIST=ATCamera ATHeaderService ATArchiver ATAOS Environment DIMM GenericCamera ScriptQueue Script ATDome Watcher
     stdin_open: true
     tty: true
     networks:
