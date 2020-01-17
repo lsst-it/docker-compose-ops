@@ -36,12 +36,35 @@ services:
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
       - LOG_LEVEL=10
-      - CSC_LIST=ATCamera ATHeaderService ATArchiver ATSpectrograph ATAOS Environment DIMM GenericCamera ScriptQueue Script ATDome Watcher
+      - CSC_LIST=ATHeaderService ATArchiver ATSpectrograph ATAOS Environment DIMM GenericCamera ScriptQueue Script ATDome Watcher
     stdin_open: true
     tty: true
     networks:
       control-network:
         ipv4_address: "139.229.170.224"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  salkafka_producer_new_03:
+    image: lsstts/salkafka:v1.0.0_salobj_v5.0.0_xml_v4.5.1
+    container_name: salkafka_producer_new_03
+    user: 73006:73006
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - BROKER_IP=kafka-0-summit-efd.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
+      - REPLICATION=3
+      - LOG_LEVEL=10
+      - CSC_LIST=ATCamera
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.226"
     logging:
         driver: "json-file"
         options:
