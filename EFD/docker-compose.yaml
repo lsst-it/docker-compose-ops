@@ -4,7 +4,7 @@ services:
 
   salkafka_producer_01:
     image: lsstts/salkafka:v1.0.0_salobj_v5.0.0_xml_v4.4.1
-    container_name: salkafka_producer
+    container_name: salkafka_producer_01
     user: 73006:73006
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
