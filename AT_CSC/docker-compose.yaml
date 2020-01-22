@@ -92,7 +92,7 @@ services:
             max-size: "10m"
 
   atspectrograph:
-    image: lsstts/atspectrograph:v0.3.1_sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/atspectrograph:DM-22731_sal_v4.0.0_salobj_v5.0.0
     container_name: atspectrograph
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
