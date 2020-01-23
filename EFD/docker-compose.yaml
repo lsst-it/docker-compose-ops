@@ -36,7 +36,7 @@ services:
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
       - LOG_LEVEL=10
-      - CSC_LIST=ATHeaderService ATArchiver ATSpectrograph ATAOS Environment DIMM GenericCamera ScriptQueue Script ATDome Watcher
+      - CSC_LIST=ATHeaderService ATArchiver ATSpectrograph Environment DIMM GenericCamera ScriptQueue Script ATDome Watcher
     stdin_open: true
     tty: true
     networks:
@@ -72,7 +72,7 @@ services:
             max-size: "10m"
 
   salkafka_producer_04:
-    image: lsstts/salkafka:v1.1.0_b22
+    image: lsstts/salkafka:v1.1.0_DM-22700
     container_name: salkafka_producer_04
     user: 73006:73006
     environment:
@@ -82,7 +82,7 @@ services:
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
       - LOG_LEVEL=10
-      - CSC_LIST=DSM
+      - CSC_LIST=DSM ATAOS
     stdin_open: true
     tty: true
     networks:
