@@ -82,7 +82,7 @@ services:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
     volumes:
       - ./aths_setup.sh:/home/saluser/.setup.sh
-      - /home/saluser/ATHS_data/www/:/home/saluser/ATHS_data/www/
+      - /home/saluser/ATHS_data/www/:/home/saluser/www/
     networks:
       control-network:
         ipv4_address: "139.229.170.223"
