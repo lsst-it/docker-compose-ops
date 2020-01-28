@@ -21,6 +21,19 @@ services:
       control-network:
         ipv4_address: "139.229.170.219"
 
+  ingester:
+    image: lsstsqre/centos:7-stack-lsst_distrib-w_2019_44
+    container_name: ingester
+    environment:
+      - LSST_DDS_DOMAIN=auxtelpath
+    volumes:
+      - /home/saluser/ingest/:/home/lsst/ingest/
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - ./ingester_setup.sh:/home/lsst/.setup.sh
+    stdin_open: true
+    tty: true
+    entrypoint: ["/home/lsst/.setup.sh"]
 
 #  watcher:
 #    image: lsstts/watcher:v0.2.1
