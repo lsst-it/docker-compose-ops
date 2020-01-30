@@ -74,7 +74,6 @@ services:
   salkafka_producer_04:
     image: lsstts/salkafka:v1.1.0_DM-22700
     container_name: salkafka_producer_04
-    user: 73006:73006
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
