@@ -212,7 +212,7 @@ services:
             max-size: "10m"
 
   firefly:
-    image: ipac/firefly:lsst-dev
+    image: ipac/firefly:release-2019.3.2
     container_name: firefly
     environment:
       - ADMIN_PASSWORD=$ADMIN_PASSWD
