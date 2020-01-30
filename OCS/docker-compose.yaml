@@ -23,7 +23,7 @@ services:
 
   dimm_2:
     image: lsstts/dimm:v0.2.0_sal_v4.0.0_salobj_v5.0.0
-    container_name: dimm
+    container_name: dimm_2
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
       - CSC_INDEX=2
@@ -45,14 +45,14 @@ services:
     tty: true
     entrypoint: ["/home/lsst/.setup.sh"]
 
-#  watcher:
-#    image: lsstts/watcher:v0.2.1
-#    container_name: watcher
-#    environment:
-#      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
-#    networks:
-#      control-network:
-#        ipv4_address: "139.229.170.221"
+  watcher:
+    image: lsstts/watcher:v0.2.1
+    container_name: watcher
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.221"
 
 networks:
   default:
