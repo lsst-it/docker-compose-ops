@@ -13,7 +13,6 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag01_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag01_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_201.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
       - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
@@ -40,7 +39,6 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag02_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag02_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_202.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
       - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
@@ -66,7 +64,6 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag03_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag03_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_203.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
       - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
@@ -92,7 +89,6 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag04_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag04_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_204.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
       - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
@@ -118,7 +114,6 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag05_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag05_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_205.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
       - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
@@ -144,7 +139,6 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag06_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag06_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_206.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
       - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
