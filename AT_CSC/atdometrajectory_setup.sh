@@ -17,8 +17,5 @@ setup ts_ATDomeTrajectory -t current
 
 
 echo "# Starting ATDomeTrajectory CSC"
-while :
-    do
-        run_atdometrajectory.py
-        echo "# ATDomeTrajectory CSC exited. Restarting..."
-done
+run_atdometrajectory.py
+echo "# ATDomeTrajectory CSC exited."
