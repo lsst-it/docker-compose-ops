@@ -49,7 +49,7 @@ services:
             max-file: "5"
             max-size: "10m"
   athexapod:
-    image: lsstts/ts_athexapod:v0.3.0_b22
+    image: lsstts/ts_athexapod:v0.3.0_b31
     container_name: athexapod
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}

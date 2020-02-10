@@ -4,7 +4,7 @@ services:
 
   # user: Patrick
   diag01:
-    image: lsstts/develop-env:b30
+    image: lsstts/develop-env:b31
     container_name: diag01
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -30,7 +30,7 @@ services:
             max-size: "10m"
   # user: Eric
   diag02:
-    image: lsstts/develop-env:b30
+    image: lsstts/develop-env:b31
     container_name: diag02
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -55,7 +55,7 @@ services:
             max-size: "10m"
   # user: Tiago
   diag03:
-    image: lsstts/develop-env:b30
+    image: lsstts/develop-env:b31
     container_name: diag03
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -80,7 +80,7 @@ services:
             max-size: "10m"
   # user: Brian
   diag04:
-    image: lsstts/develop-env:b30
+    image: lsstts/develop-env:b31
     container_name: diag04
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -105,7 +105,7 @@ services:
             max-size: "10m"
   # user: Robert
   diag05:
-    image: lsstts/develop-env:b30
+    image: lsstts/develop-env:b31
     container_name: diag05
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -130,7 +130,7 @@ services:
             max-size: "10m"
   # user: Kevin Reil
   diag06:
-    image: lsstts/develop-env:b30
+    image: lsstts/develop-env:b31
     container_name: diag06
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -156,7 +156,7 @@ services:
 
   # user: cslange
   diag07:
-    image: lsstts/develop-env:b30
+    image: lsstts/develop-env:b31
     container_name: diag07
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -182,7 +182,7 @@ services:
 
   # user: merlin
   diag08:
-    image: lsstts/develop-env:b30
+    image: lsstts/develop-env:b31
     container_name: diag08
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -208,7 +208,7 @@ services:
 
   # user: Michael
   diag09:
-    image: lsstts/develop-env:b30
+    image: lsstts/develop-env:b31
     container_name: diag09
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
