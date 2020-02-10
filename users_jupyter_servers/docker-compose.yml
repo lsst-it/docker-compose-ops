@@ -13,7 +13,10 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag01_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag01_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /mnt/data/:/mnt/data
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
       - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
@@ -39,8 +42,11 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag02_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag02_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
       - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
@@ -64,8 +70,11 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag03_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag03_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
       - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
@@ -89,8 +98,11 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag04_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag04_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
       - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
@@ -114,8 +126,11 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag05_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag05_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
       - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
@@ -139,8 +154,11 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag06_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag06_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
       - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
@@ -165,8 +183,11 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag07_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag07_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
       - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
@@ -191,8 +212,11 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag08_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag08_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
       - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
@@ -217,8 +241,11 @@ services:
       - $HOME/shared/:/home/saluser/shared/
       - ./diag09_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag09_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
       - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
