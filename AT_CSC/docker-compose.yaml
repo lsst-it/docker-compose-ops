@@ -18,7 +18,7 @@ services:
             max-size: "10m"
 
   atdome:
-    image: lsstts/develop-env:b22
+    image: lsstts/develop-env:b36
     container_name: atdome
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
