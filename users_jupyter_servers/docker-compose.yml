@@ -275,6 +275,64 @@ services:
       control-network:
         ipv4_address: "139.229.170.210"
 
+  # user: Chris Stubbs
+  diag11:
+    image: lsstts/develop-env:b32
+    container_name: diag11
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag11:/home/saluser/develop
+      - $HOME/shared/:/home/saluser/shared/
+      - ./diag11_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag11_setup.sh:/home/saluser/.setup.sh
+      - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.211"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  # user: SashaBrownsberger
+  diag12:
+    image: lsstts/develop-env:b32
+    container_name: diag12
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag12:/home/saluser/develop
+      - $HOME/shared/:/home/saluser/shared/
+      - ./diag12_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag12_setup.sh:/home/saluser/.setup.sh
+      - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.212"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
 networks:
   default:
     external:
