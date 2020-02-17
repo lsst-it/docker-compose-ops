@@ -62,7 +62,7 @@ services:
             max-file: "5"
             max-size: "10m"
   ataos:
-    image: lsstts/ataos:v1.4.1_b22
+    image: lsstts/ataos:v1.5.0
     container_name: ataos
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
