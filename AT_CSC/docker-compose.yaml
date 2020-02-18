@@ -76,7 +76,7 @@ services:
             max-size: "10m"
 
   atheaderservice:
-    image: lsstts/at_headerservice:v1.3.1_salobj_v5.0.0_xml_v4.6.0
+    image: lsstts/at_headerservice:v1.4.0_salobj_v5.0.0_xml_v4.6.0
     container_name: atheaderservice
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
