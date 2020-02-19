@@ -44,7 +44,7 @@ services:
     entrypoint: ["/home/lsst/.setup.sh"]
 
   watcher:
-    image: lsstts/watcher:v0.2.1
+    image: lsstts/watcher:v1.0.1
     container_name: watcher
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -62,7 +62,7 @@ services:
     stdin_open: true
     tty: true
     networks:
-      test-stand-network:
+      control-network:
         ipv4_address: "139.229.170.229"
 
 
