@@ -9,17 +9,16 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag01:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag01:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag01_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag01_setup.sh:/home/saluser/.setup.sh
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
       - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
     tty: true
     networks:
@@ -38,17 +37,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag02:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag02:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag02_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag02_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
@@ -66,17 +65,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag03:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag03:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag03_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag03_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
@@ -94,17 +93,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag04:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag04:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag04_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag04_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
@@ -122,17 +121,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag05:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag05:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag05_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag05_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
@@ -150,17 +149,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag06:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag06:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag06_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag06_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
@@ -179,17 +178,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag07:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag07:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag07_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag07_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
@@ -208,17 +207,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag08:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag08:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag08_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag08_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
@@ -237,17 +236,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag09:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag09:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag09_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag09_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
@@ -282,17 +281,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag11:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag11:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag11_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag11_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
@@ -311,17 +310,17 @@ services:
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag12:/home/saluser/develop
-      - $HOME/shared/:/home/saluser/shared/
+      - $USERS_DATA/develop_diag12:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag12_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag12_setup.sh:/home/saluser/.setup.sh
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
       - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
       - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
       - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/data/:/mnt/data
     stdin_open: true
     tty: true
     networks:
