@@ -100,12 +100,34 @@ services:
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
       - LOG_LEVEL=10
-      - CSC_LIST=MTM1M3
+      - CSC_LIST=MTM1M3 MTVMS
     stdin_open: true
     tty: true
     networks:
       control-network:
         ipv4_address: "139.229.170.228"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  salkafka_producer_06:
+    image: lsstts/salkafka:v1.1.0_develop
+    container_name: salkafka_producer_06
+    environment:
+      - LSST_DDS_DOMAIN=m2
+      - BROKER_IP=kafka-0-summit-efd.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
+      - REPLICATION=3
+      - LOG_LEVEL=10
+      - CSC_LIST=MTM2
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.229"
     logging:
         driver: "json-file"
         options:
