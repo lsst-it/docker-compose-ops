@@ -127,7 +127,7 @@ services:
     tty: true
     networks:
       control-network:
-        ipv4_address: "139.229.170.229"
+        ipv4_address: "139.229.170.223"
     logging:
         driver: "json-file"
         options:
