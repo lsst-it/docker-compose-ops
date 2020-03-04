@@ -34,8 +34,6 @@ services:
   ingester:
     image: lsstsqre/centos:7-stack-lsst_distrib-w_2019_44
     container_name: ingester
-    environment:
-      - LSST_DDS_DOMAIN=auxtelpath
     volumes:
       - /home/saluser/ingest/:/home/lsst/ingest/
       - /mnt/dmcs/:/mnt/dmcs
@@ -46,13 +44,27 @@ services:
     entrypoint: ["/home/lsst/.setup.sh"]
 
   watcher:
-    image: lsstts/watcher:v0.2.1
+    image: lsstts/watcher:v1.0.1
     container_name: watcher
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
     networks:
       control-network:
         ipv4_address: "139.229.170.221"
+
+  queue:
+    image: lsstts/develop-env:b22
+    container_name: queue
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    volumes:
+      - ./at_queue_setup.sh:/home/saluser/.setup.sh
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.229"
+
 
 networks:
   default:

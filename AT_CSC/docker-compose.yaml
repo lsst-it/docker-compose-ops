@@ -3,14 +3,14 @@ version: '3.6'
 services:
 
   atptg:
-    image: tiagorib/ptkernel:v1.1.0_rc2_xml4.4.1_sal4.0.0
+    image: ts-dockerhub.lsst.org/ptkernel:v1.1.0_rc3_b22
     container_name: atptg
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
       - TELESCOPE=AuxTel
     networks:
       control-network:
-        ipv4_address: "139.229.170.211"
+        ipv4_address: "139.229.170.231"
     logging:
         driver: "json-file"
         options:
@@ -18,7 +18,7 @@ services:
             max-size: "10m"
 
   atdome:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/develop-env:b36
     container_name: atdome
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -26,7 +26,7 @@ services:
       - ./atdome_setup.sh:/home/saluser/.setup.sh
     networks:
       control-network:
-        ipv4_address: "139.229.170.212"
+        ipv4_address: "139.229.170.232"
     logging:
         driver: "json-file"
         options:
@@ -34,7 +34,7 @@ services:
             max-size: "10m"
 
   atdometrajectory:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/develop-env:b22
     container_name: atdometrajectory
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -42,33 +42,33 @@ services:
       - ./atdometrajectory_setup.sh:/home/saluser/.setup.sh
     networks:
       control-network:
-        ipv4_address: "139.229.170.213"
+        ipv4_address: "139.229.170.233"
     logging:
         driver: "json-file"
         options:
             max-file: "5"
             max-size: "10m"
   athexapod:
-    image: lsstts/ts_athexapod:DM-22531
+    image: lsstts/ts_athexapod:v0.3.0_b31
     container_name: athexapod
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
     networks:
       control-network:
-        ipv4_address: "139.229.170.214"
+        ipv4_address: "139.229.170.234"
     logging:
         driver: "json-file"
         options:
             max-file: "5"
             max-size: "10m"
   ataos:
-    image: lsstts/ataos:DM-22700_5
+    image: lsstts/ataos:v1.5.0
     container_name: ataos
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
     networks:
       control-network:
-        ipv4_address: "139.229.170.215"
+        ipv4_address: "139.229.170.235"
     logging:
         driver: "json-file"
         options:
@@ -76,7 +76,7 @@ services:
             max-size: "10m"
 
   atheaderservice:
-    image: lsstts/at_headerservice:v1.2.1_salobj_v5.0.0_xml_v4.4.1
+    image: lsstts/at_headerservice:v1.4.0_salobj_v5.0.0_xml_v4.6.0
     container_name: atheaderservice
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -85,7 +85,7 @@ services:
       - /home/saluser/ATHS_data/www/:/home/saluser/www/
     networks:
       control-network:
-        ipv4_address: "139.229.170.223"
+        ipv4_address: "139.229.170.236"
     logging:
         driver: "json-file"
         options:
@@ -93,7 +93,7 @@ services:
             max-size: "10m"
 
   atspectrograph:
-    image: lsstts/atspectrograph:DM-22731_sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/atspectrograph:v0.5.0_b32
     container_name: atspectrograph
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}

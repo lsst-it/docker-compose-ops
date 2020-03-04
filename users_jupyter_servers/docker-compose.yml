@@ -4,19 +4,20 @@ services:
 
   # user: Patrick
   diag01:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    image: lsstts/develop-env:b32
     container_name: diag01
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag01:/home/saluser/develop
+      - $USERS_DATA/develop_diag01:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag01_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag01_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_201.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
-      - /mnt/dmcs/:/mnt/dmcs
-      - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -30,19 +31,21 @@ services:
             max-size: "10m"
   # user: Eric
   diag02:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    image: lsstts/develop-env:b32
     container_name: diag02
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag02:/home/saluser/develop
+      - $USERS_DATA/develop_diag02:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag02_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag02_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_202.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -55,19 +58,21 @@ services:
             max-size: "10m"
   # user: Tiago
   diag03:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    image: lsstts/develop-env:b32
     container_name: diag03
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag03:/home/saluser/develop
+      - $USERS_DATA/develop_diag03:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag03_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag03_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_203.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -80,19 +85,21 @@ services:
             max-size: "10m"
   # user: Brian
   diag04:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    image: lsstts/develop-env:b32
     container_name: diag04
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag04:/home/saluser/develop
+      - $USERS_DATA/develop_diag04:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag04_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag04_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_204.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -105,19 +112,21 @@ services:
             max-size: "10m"
   # user: Robert
   diag05:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    image: lsstts/develop-env:b32
     container_name: diag05
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag05:/home/saluser/develop
+      - $USERS_DATA/develop_diag05:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag05_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag05_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_205.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -130,19 +139,21 @@ services:
             max-size: "10m"
   # user: Kevin Reil
   diag06:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    image: lsstts/develop-env:b32
     container_name: diag06
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag06:/home/saluser/develop
+      - $USERS_DATA/develop_diag06:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag06_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag06_setup.sh:/home/saluser/.setup.sh
-      - ./ospl_206.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -156,18 +167,21 @@ services:
 
   # user: cslange
   diag07:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    image: lsstts/develop-env:b32
     container_name: diag07
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag07:/home/saluser/develop
+      - $USERS_DATA/develop_diag07:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag07_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag07_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -181,18 +195,21 @@ services:
 
   # user: merlin
   diag08:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    image: lsstts/develop-env:b32
     container_name: diag08
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag08:/home/saluser/develop
+      - $USERS_DATA/develop_diag08:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag08_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag08_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -206,18 +223,21 @@ services:
 
   # user: Michael
   diag09:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    image: lsstts/develop-env:b32
     container_name: diag09
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
     volumes:
-      - $HOME/develop_diag09:/home/saluser/develop
+      - $USERS_DATA/develop_diag09:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
       - ./diag09_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag09_setup.sh:/home/saluser/.setup.sh
-      - /mnt/dmcs/:/mnt/dmcs
       - /mnt/data/:/mnt/data
-      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
-      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -244,6 +264,62 @@ services:
     networks:
       control-network:
         ipv4_address: "139.229.170.210"
+
+  # user: Chris Stubbs
+  diag11:
+    image: lsstts/develop-env:b32
+    container_name: diag11
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $USERS_DATA/develop_diag11:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
+      - ./diag11_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag11_setup.sh:/home/saluser/.setup.sh
+      - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.211"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  # user: SashaBrownsberger
+  diag12:
+    image: lsstts/develop-env:b32
+    container_name: diag12
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $USERS_DATA/develop_diag12:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
+      - ./diag12_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag12_setup.sh:/home/saluser/.setup.sh
+      - /mnt/data/:/mnt/data
+      - /mnt/dmcs/data/:/mnt/dmcs/data/
+      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.212"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
 
 networks:
   default:

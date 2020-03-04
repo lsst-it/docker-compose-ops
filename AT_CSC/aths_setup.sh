@@ -8,8 +8,6 @@ source $CONDA_PREFIX/HeaderService/setpath.sh $CONDA_PREFIX/HeaderService
 
 echo "# Starting ATHeaderService CSC"
 
-while :
-    do
-        ATHS_salobj -c $HEADERSERVICE_DIR/etc/conf/atTelemetry.yaml --send_efd_message
-        echo "# ATHeaderService exited. Restarting..."
-done
+ATHS_salobj -c $HEADERSERVICE_DIR/etc/conf/atTelemetry.yaml --send_efd_message
+
+echo "# ATHeaderService exited."
