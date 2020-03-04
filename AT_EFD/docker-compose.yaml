@@ -1,3 +1,7 @@
+#
+# DEPRECATED!!!!!!
+#
+
 version: "3.4"
 
 services:
@@ -19,8 +23,8 @@ services:
     tty: true
     networks:
       zbridge:
-      control-network:
-        ipv4_address: "139.229.170.224"
+#      control-network:
+#        ipv4_address: "139.229.170.224"
     logging:
         driver: "json-file"
         options:

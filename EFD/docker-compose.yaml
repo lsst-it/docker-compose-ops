@@ -1,0 +1,142 @@
+version: "3.4"
+
+services:
+
+  salkafka_producer_01:
+    image: lsstts/salkafka:v1.1.0_xml_v4.6.0
+    container_name: salkafka_producer_01
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - BROKER_IP=kafka-0-summit-efd.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
+      - REPLICATION=3
+      - LOG_LEVEL=10
+      - CSC_LIST=ATPtg ATMCS ATHexapod ATDomeTrajectory ATPneumatics
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.225"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  salkafka_producer_02:
+    image: lsstts/salkafka:v1.1.0_xml_v4.6.0
+    container_name: salkafka_producer_02
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - BROKER_IP=kafka-0-summit-efd.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
+      - REPLICATION=3
+      - LOG_LEVEL=10
+      - CSC_LIST=ATHeaderService ATArchiver ATSpectrograph ScriptQueue Script ATDome DIMM Environment GenericCamera Watcher
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.224"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  salkafka_producer_03:
+    image: lsstts/salkafka:v1.1.0_xml_v4.6.0
+    container_name: salkafka_producer_03
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - BROKER_IP=kafka-0-summit-efd.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
+      - REPLICATION=3
+      - LOG_LEVEL=10
+      - CSC_LIST=ATCamera DSM
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.226"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  salkafka_producer_04:
+    image: lsstts/salkafka:v1.1.0_DM-22700
+    container_name: salkafka_producer_04
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - BROKER_IP=kafka-0-summit-efd.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
+      - REPLICATION=3
+      - LOG_LEVEL=10
+      - CSC_LIST=ATAOS
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.227"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  salkafka_producer_05:
+    image: lsstts/salkafka:v1.1.0_develop
+    container_name: salkafka_producer_05
+    environment:
+      - LSST_DDS_DOMAIN=m1m3Test213
+      - BROKER_IP=kafka-0-summit-efd.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
+      - REPLICATION=3
+      - LOG_LEVEL=10
+      - CSC_LIST=MTM1M3 MTVMS
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.228"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  salkafka_producer_06:
+    image: lsstts/salkafka:v1.1.0_develop
+    container_name: salkafka_producer_06
+    environment:
+      - LSST_DDS_DOMAIN=m2
+      - BROKER_IP=kafka-0-summit-efd.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
+      - REPLICATION=3
+      - LOG_LEVEL=10
+      - CSC_LIST=MTM2
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.223"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+networks:
+  default:
+    external:
+      name: control-network
+  control-network:
+    external: true

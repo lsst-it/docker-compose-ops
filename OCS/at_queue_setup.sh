@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Source this file when starting the container to set it up
 
 echo "#"
 echo "# Loading LSST Stack"
@@ -14,7 +16,11 @@ setup ts_xml -t current
 setup ts_sal -t current
 setup ts_salobj -t current
 setup ts_scriptqueue -t current
-setup ts_electrometer -t current
-cd /home/saluser/repos/ts_electrometer2/python/lsst/ts/electrometer/electrometerEUI
-echo "# Starting GUI"
-python ./EUI.py
+setup ts_ATDome -t current
+setup ts_ATDomeTrajectory -t current
+setup ts_standardscripts -t current
+setup ts_externalscripts -t current
+
+echo "# Starting script queue for AT - index 2"
+run_script_queue.py 2
+echo "# Queue exited..."

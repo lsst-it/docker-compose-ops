@@ -1,7 +1,0 @@
-host: "139.229.170.48"
-port: 50000
-connectionTimeout: 2
-readTimeout: 2
-sendTimeout: 2
-endStr: "endl"
-maxLength: 1024

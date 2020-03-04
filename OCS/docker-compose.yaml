@@ -21,15 +21,50 @@ services:
       control-network:
         ipv4_address: "139.229.170.219"
 
+  dimm_2:
+    image: lsstts/dimm:v0.2.0_sal_v4.0.0_salobj_v5.0.0
+    container_name: dimm_2
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - CSC_INDEX=2
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.222"
 
-#  watcher:
-#    image: lsstts/watcher:v0.2.1
-#    container_name: watcher
-#    environment:
-#      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
-#    networks:
-#      control-network:
-#        ipv4_address: "139.229.170.221"
+  ingester:
+    image: lsstsqre/centos:7-stack-lsst_distrib-w_2019_44
+    container_name: ingester
+    volumes:
+      - /home/saluser/ingest/:/home/lsst/ingest/
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - ./ingester_setup.sh:/home/lsst/.setup.sh
+    stdin_open: true
+    tty: true
+    entrypoint: ["/home/lsst/.setup.sh"]
+
+  watcher:
+    image: lsstts/watcher:v1.0.1
+    container_name: watcher
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.221"
+
+  queue:
+    image: lsstts/develop-env:b22
+    container_name: queue
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    volumes:
+      - ./at_queue_setup.sh:/home/saluser/.setup.sh
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.229"
+
 
 networks:
   default:

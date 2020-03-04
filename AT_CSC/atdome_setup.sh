@@ -19,9 +19,4 @@ cd
 
 setup ts_ATDome -t current
 
-while :
-    do
-        run_atdome.py
-        echo "# ATDome Simulator exited. Restarting..."
-done
-
+run_atdome.py
