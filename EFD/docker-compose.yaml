@@ -3,16 +3,16 @@ version: "3.4"
 services:
 
   salkafka_producer_01:
-    image: lsstts/salkafka:v1.1.0_xml_v4.6.0
+    image: lsstts/salkafka:v1.1.1_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: salkafka_producer_01
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
-      - LOG_LEVEL=10
-      - CSC_LIST=ATPtg ATMCS ATHexapod ATDomeTrajectory ATPneumatics
+      - LOG_LEVEL=20
+      - CSC_LIST=ATPtg ATMCS ATHexapod ATDomeTrajectory ATPneumatics ATAOS
     stdin_open: true
     tty: true
     networks:
@@ -25,15 +25,15 @@ services:
             max-size: "10m"
 
   salkafka_producer_02:
-    image: lsstts/salkafka:v1.1.0_xml_v4.6.0
+    image: lsstts/salkafka:v1.1.1_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: salkafka_producer_02
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
-      - LOG_LEVEL=10
+      - LOG_LEVEL=20
       - CSC_LIST=ATHeaderService ATArchiver ATSpectrograph ScriptQueue Script ATDome DIMM Environment GenericCamera Watcher
     stdin_open: true
     tty: true
@@ -47,15 +47,15 @@ services:
             max-size: "10m"
 
   salkafka_producer_03:
-    image: lsstts/salkafka:v1.1.0_xml_v4.6.0
+    image: lsstts/salkafka:v1.1.1_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: salkafka_producer_03
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
-      - LOG_LEVEL=10
+      - LOG_LEVEL=20
       - CSC_LIST=ATCamera DSM
     stdin_open: true
     tty: true
@@ -69,16 +69,16 @@ services:
             max-size: "10m"
 
   salkafka_producer_04:
-    image: lsstts/salkafka:v1.1.0_DM-22700
+    image: lsstts/salkafka:v1.1.1_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: salkafka_producer_04
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
       - LOG_LEVEL=10
-      - CSC_LIST=ATAOS
+      - CSC_LIST=Scheduler
     stdin_open: true
     tty: true
     networks:
@@ -122,7 +122,7 @@ services:
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
       - REPLICATION=3
       - LOG_LEVEL=10
-      - CSC_LIST=MTM2
+      - CSC_LIST=MTM2 Hexapod Rotator
     stdin_open: true
     tty: true
     networks:

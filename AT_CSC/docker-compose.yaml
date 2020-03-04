@@ -3,10 +3,10 @@ version: '3.6'
 services:
 
   atptg:
-    image: ts-dockerhub.lsst.org/ptkernel:v1.1.0_rc3_b22
+    image: ts-dockerhub.lsst.org/ptkernel:v1.1.0_rc4_b42
     container_name: atptg
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
       - TELESCOPE=AuxTel
     networks:
       control-network:
@@ -18,10 +18,10 @@ services:
             max-size: "10m"
 
   atdome:
-    image: lsstts/develop-env:b36
+    image: lsstts/atdome:v1.1_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: atdome
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - ./atdome_setup.sh:/home/saluser/.setup.sh
     networks:
@@ -34,10 +34,10 @@ services:
             max-size: "10m"
 
   atdometrajectory:
-    image: lsstts/develop-env:b22
+    image: lsstts/atdometrajectory:v1.2_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: atdometrajectory
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - ./atdometrajectory_setup.sh:/home/saluser/.setup.sh
     networks:
@@ -49,10 +49,12 @@ services:
             max-file: "5"
             max-size: "10m"
   athexapod:
-    image: lsstts/ts_athexapod:v0.3.0_b31
+    image: lsstts/athexapod:v0.4_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: athexapod
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
+    volumes:
+      - ./athexapod_setup.sh:/home/saluser/.setup.sh
     networks:
       control-network:
         ipv4_address: "139.229.170.234"
@@ -62,10 +64,12 @@ services:
             max-file: "5"
             max-size: "10m"
   ataos:
-    image: lsstts/ataos:v1.5.0
+    image: lsstts/ataos:v1.5_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: ataos
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
+    volumes:
+      - ./ataos_setup.sh:/home/saluser/.setup.sh
     networks:
       control-network:
         ipv4_address: "139.229.170.235"
@@ -76,10 +80,10 @@ services:
             max-size: "10m"
 
   atheaderservice:
-    image: lsstts/at_headerservice:v1.4.0_salobj_v5.0.0_xml_v4.6.0
+    image: lsstts/at_headerservice:v1.4.0_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: atheaderservice
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - ./aths_setup.sh:/home/saluser/.setup.sh
       - /home/saluser/ATHS_data/www/:/home/saluser/www/
@@ -93,10 +97,12 @@ services:
             max-size: "10m"
 
   atspectrograph:
-    image: lsstts/atspectrograph:v0.5.0_b32
+    image: lsstts/atspec:v0.5_salobj_v5.4.0_idl_v1.1.2_xml_v4.7.0
     container_name: atspectrograph
     environment:
-      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+      - LSST_DDS_DOMAIN=lsatmcs
+    volumes:
+      - ./atspec_setup.sh:/home/saluser/.setup.sh
     networks:
       control-network:
         ipv4_address: "139.229.170.230"

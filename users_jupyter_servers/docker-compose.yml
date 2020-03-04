@@ -4,10 +4,10 @@ services:
 
   # user: Patrick
   diag01:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag01
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag01:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -15,9 +15,9 @@ services:
       - ./diag01_setup.sh:/home/saluser/.setup.sh
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -31,10 +31,10 @@ services:
             max-size: "10m"
   # user: Eric
   diag02:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag02
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag02:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -43,9 +43,9 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -58,10 +58,10 @@ services:
             max-size: "10m"
   # user: Tiago
   diag03:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag03
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag03:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -70,9 +70,9 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -85,10 +85,10 @@ services:
             max-size: "10m"
   # user: Brian
   diag04:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag04
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag04:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -97,9 +97,9 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -112,10 +112,10 @@ services:
             max-size: "10m"
   # user: Robert
   diag05:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag05
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag05:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -124,9 +124,9 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -139,10 +139,10 @@ services:
             max-size: "10m"
   # user: Kevin Reil
   diag06:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag06
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag06:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -151,9 +151,9 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -167,10 +167,10 @@ services:
 
   # user: cslange
   diag07:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag07
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag07:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -179,9 +179,9 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -195,10 +195,10 @@ services:
 
   # user: merlin
   diag08:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag08
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag08:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -207,9 +207,9 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -223,10 +223,10 @@ services:
 
   # user: Michael
   diag09:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag09
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag09:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -235,9 +235,9 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -267,10 +267,10 @@ services:
 
   # user: Chris Stubbs
   diag11:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag11
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag11:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -279,9 +279,9 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
@@ -295,10 +295,10 @@ services:
 
   # user: SashaBrownsberger
   diag12:
-    image: lsstts/develop-env:b32
+    image: lsstts/develop-env:b45
     container_name: diag12
     environment:
-      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+      - LSST_DDS_DOMAIN=lsatmcs
     volumes:
       - $USERS_DATA/develop_diag12:/home/saluser/develop
       - $USERS_DATA/shared/:/home/saluser/shared/
@@ -307,14 +307,70 @@ services:
       - /mnt/data/:/mnt/data
       - /mnt/dmcs/data/:/mnt/dmcs/data/
       - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
-      - /mnt/dmcs/oods_butler_repo/repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
-      - /mnt/dmcs/oods_butler_repo/repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
-      - /mnt/dmcs/oods_butler_repo/repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
     stdin_open: true
     tty: true
     networks:
       control-network:
         ipv4_address: "139.229.170.212"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  # user: Andrew
+  diag13:
+    image: lsstts/develop-env:b45
+    container_name: diag13
+    environment:
+      - LSST_DDS_DOMAIN=m2
+    volumes:
+      - $USERS_DATA/develop_diag13:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
+      - ./diag13_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag13_setup.sh:/home/saluser/.setup.sh
+#      - /mnt/data/:/mnt/data
+#      - /mnt/dmcs/data/:/mnt/dmcs/data/
+#      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+#      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+#      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+#      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.213"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  # user: TeWei
+  diag14:
+    image: lsstts/develop-env:b45
+    container_name: diag14
+    environment:
+      - LSST_DDS_DOMAIN=m2
+    volumes:
+      - $USERS_DATA/develop_diag14:/home/saluser/develop
+      - $USERS_DATA/shared/:/home/saluser/shared/
+      - ./diag14_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag14_setup.sh:/home/saluser/.setup.sh
+#      - /mnt/data/:/mnt/data
+#      - /mnt/dmcs/data/:/mnt/dmcs/data/
+#      - $USERS_DATA/repo:/mnt/dmcs/oods_butler_repo/repo/
+#      - /mnt/dmcs/oods_butler_repo/_mapper:/mnt/dmcs/oods_butler_repo/repo/_mapper
+#      - /mnt/dmcs/oods_butler_repo/raw:/mnt/dmcs/oods_butler_repo/repo/raw
+#      - /mnt/dmcs/oods_butler_repo/registry.sqlite3:/mnt/dmcs/oods_butler_repo/repo/registry.sqlite3
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.214"
     logging:
         driver: "json-file"
         options:
