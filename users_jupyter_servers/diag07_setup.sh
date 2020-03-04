@@ -13,13 +13,6 @@ setup lsst_distrib
 echo "#"
 echo "# Setting up sal, salobj and scriptqueue"
 
-
-cd ~/develop/cwfs/
-eups declare cwfs -r . -t $USER
-setup cwfs -t $USER
-
-cd ~/
-
 setup ts_xml -t current
 setup ts_sal -t current
 setup ts_salobj -t current
@@ -28,4 +21,4 @@ setup ts_scriptqueue -t current
 echo "#"
 echo "# Starting jupyter lab server"
 
-jupyter lab --ip 139.229.170.203 --port 8885 --no-browser
+jupyter lab --ip 139.229.170.207 --port 8885 --no-browser

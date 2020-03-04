@@ -2,8 +2,9 @@ version: "3.4"
 
 services:
 
+  # user: Patrick
   diag01:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
     container_name: diag01
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -12,6 +13,10 @@ services:
       - ./diag01_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag01_setup.sh:/home/saluser/.setup.sh
       - ./ospl_201.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
     tty: true
     networks:
@@ -23,8 +28,9 @@ services:
         options:
             max-file: "5"
             max-size: "10m"
+  # user: Eric
   diag02:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
     container_name: diag02
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -33,6 +39,10 @@ services:
       - ./diag02_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag02_setup.sh:/home/saluser/.setup.sh
       - ./ospl_202.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
     tty: true
     networks:
@@ -43,8 +53,9 @@ services:
         options:
             max-file: "5"
             max-size: "10m"
+  # user: Tiago
   diag03:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
     container_name: diag03
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -53,6 +64,10 @@ services:
       - ./diag03_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag03_setup.sh:/home/saluser/.setup.sh
       - ./ospl_203.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
     tty: true
     networks:
@@ -63,8 +78,9 @@ services:
         options:
             max-file: "5"
             max-size: "10m"
+  # user: Brian
   diag04:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
     container_name: diag04
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -73,6 +89,10 @@ services:
       - ./diag04_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag04_setup.sh:/home/saluser/.setup.sh
       - ./ospl_204.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
     tty: true
     networks:
@@ -83,8 +103,9 @@ services:
         options:
             max-file: "5"
             max-size: "10m"
+  # user: Robert
   diag05:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
     container_name: diag05
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -93,6 +114,10 @@ services:
       - ./diag05_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag05_setup.sh:/home/saluser/.setup.sh
       - ./ospl_205.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
     tty: true
     networks:
@@ -103,8 +128,9 @@ services:
         options:
             max-file: "5"
             max-size: "10m"
+  # user: Kevin Reil
   diag06:
-    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
     container_name: diag06
     environment:
       - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
@@ -113,6 +139,10 @@ services:
       - ./diag06_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
       - ./diag06_setup.sh:/home/saluser/.setup.sh
       - ./ospl_206.xml:/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
     stdin_open: true
     tty: true
     networks:
@@ -123,6 +153,97 @@ services:
         options:
             max-file: "5"
             max-size: "10m"
+
+  # user: cslange
+  diag07:
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    container_name: diag07
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag07:/home/saluser/develop
+      - ./diag07_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag07_setup.sh:/home/saluser/.setup.sh
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.207"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  # user: merlin
+  diag08:
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    container_name: diag08
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag08:/home/saluser/develop
+      - ./diag08_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag08_setup.sh:/home/saluser/.setup.sh
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.208"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  # user: Michael
+  diag09:
+    image: lsstts/develop-env:sal_v4.0.0_salobj_v5.0.0_b27
+    container_name: diag09
+    environment:
+      - LSST_DDS_DOMAIN=$LSST_DDS_DOMAIN
+    volumes:
+      - $HOME/develop_diag09:/home/saluser/develop
+      - ./diag09_notebook_config.py:/home/saluser/.jupyter/jupyter_notebook_config.py
+      - ./diag09_setup.sh:/home/saluser/.setup.sh
+      - /mnt/dmcs/:/mnt/dmcs
+      - /mnt/data/:/mnt/data
+      - /home/saluser/summit_data_reduc/rerun/:/mnt/dmcs/oods_butler_repo/repo/rerun
+      - /home/saluser/summit_data_reduc/CALIB/:/mnt/dmcs/oods_butler_repo/repo/CALIB
+    stdin_open: true
+    tty: true
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.209"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  firefly:
+    image: ipac/firefly:release-2019.3.2
+    container_name: firefly
+    environment:
+      - ADMIN_PASSWORD=$ADMIN_PASSWD
+      - MANAGER=FALSE
+      - FIREFLY_OPTS="-Dvisualize.fits.search.path=/scratch/firefly"
+      - FIREFLY_SHARED_WORK_DIR="/scratch/firefly/workarea"
+      - MAX_JVM_SIZE=64G
+      - DEBUG=false
+    volumes:
+      - /scratch
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.210"
 
 networks:
   default:

@@ -62,7 +62,7 @@ services:
             max-file: "5"
             max-size: "10m"
   ataos:
-    image: lsstts/ataos:DM-22130_salobj5
+    image: lsstts/ataos:DM-22700_5
     container_name: ataos
     environment:
       - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
@@ -74,6 +74,38 @@ services:
         options:
             max-file: "5"
             max-size: "10m"
+
+  atheaderservice:
+    image: lsstts/at_headerservice:v1.2.1_salobj_v5.0.0_xml_v4.4.1
+    container_name: atheaderservice
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    volumes:
+      - ./aths_setup.sh:/home/saluser/.setup.sh
+      - /home/saluser/ATHS_data/www/:/home/saluser/www/
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.223"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
+  atspectrograph:
+    image: lsstts/atspectrograph:DM-22731_sal_v4.0.0_salobj_v5.0.0
+    container_name: atspectrograph
+    environment:
+      - LSST_DDS_DOMAIN=${LSST_DDS_DOMAIN}
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.230"
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
+
 networks:
   default:
     external:
