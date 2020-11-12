@@ -21,7 +21,7 @@ services:
     ipc: host
     pid: host
     networks:
-      test-stand-network:
+      control-network:
         ipv4_address: "139.229.170.22"
     logging:
       driver: "json-file"
@@ -43,7 +43,7 @@ services:
     ipc: host
     pid: host
     networks:
-      test-stand-network:
+      control-network:
         ipv4_address: "139.229.170.23"
     logging:
       driver: "json-file"
@@ -54,6 +54,6 @@ services:
 networks:
   default:
     external:
-      name: test-stand-network
-  test-stand-network:
+      name: control-network
+  control-network:
     external: true

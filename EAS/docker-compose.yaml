@@ -8,6 +8,7 @@ services:
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
       - RUN_ARG=1
+      - LSST_DDS_ALIGNEE=Lazy
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
@@ -17,7 +18,7 @@ services:
     ipc: host
     pid: host
     networks:
-      test-stand-network:
+      control-network:
         ipv4_address: "139.229.170.25"
     logging:
       driver: "json-file"
@@ -28,6 +29,6 @@ services:
 networks:
   default:
     external:
-      name: test-stand-network
-  test-stand-network:
+      name: control-network
+  control-network:
     external: true
