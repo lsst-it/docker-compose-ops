@@ -19,7 +19,7 @@ services:
     pid: host
     networks:
       control-network:
-        ipv4_address: "139.229.170.25"
+        ipv4_address: "139.229.170.220"
     logging:
       driver: "json-file"
       options:
