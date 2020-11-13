@@ -3,6 +3,7 @@ version: "3.6"
 # The different daemons are meant for different summit machines:
 # ospl-daemon1 - azar1.cp.lsst.org (master)
 # ospl-daemon2 - azar2.cp.lsst.org
+# ospl-daemon3 - amor01.cp.lsst.org
 
 services:
 
@@ -45,6 +46,28 @@ services:
     networks:
       control-network:
         ipv4_address: "139.229.170.23"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ospl-daemon3:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - /tmp/docker_tmp/:/tmp/
+      - ${OSPL_CONFIGURATION_FILE}:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      control-network:
+        ipv4_address: "139.229.170.24"
     logging:
       driver: "json-file"
       options:
