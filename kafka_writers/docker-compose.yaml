@@ -22,7 +22,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.240"
     logging:
       driver: "json-file"
@@ -51,7 +51,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.241"
     logging:
       driver: "json-file"
@@ -80,7 +80,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.242"
     logging:
       driver: "json-file"
@@ -109,7 +109,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.243"
     logging:
       driver: "json-file"
@@ -138,7 +138,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.244"
     logging:
       driver: "json-file"
@@ -167,7 +167,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.245"
     logging:
       driver: "json-file"
@@ -196,7 +196,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.246"
     logging:
       driver: "json-file"
@@ -225,7 +225,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.247"
     logging:
       driver: "json-file"
@@ -254,7 +254,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.248"
     logging:
       driver: "json-file"
@@ -283,7 +283,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.249"
     logging:
       driver: "json-file"
@@ -294,6 +294,6 @@ services:
 networks:
   default:
     external:
-      name: control-network
-  control-network:
+      name: dds-network
+  dds-network:
     external: true

@@ -22,7 +22,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.22"
     logging:
       driver: "json-file"
@@ -44,7 +44,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.170.23"
     logging:
       driver: "json-file"
@@ -66,7 +66,7 @@ services:
     ipc: host
     pid: host
     networks:
-      control-network:
+      dds-network:
         ipv4_address: "139.229.167.195"
     logging:
       driver: "json-file"
@@ -77,6 +77,6 @@ services:
 networks:
   default:
     external:
-      name: control-network
-  control-network:
+      name: dds-network
+  dds-network:
     external: true
