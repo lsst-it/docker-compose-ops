@@ -98,7 +98,7 @@
     <DurabilityService name="durability">
         <Tracing>
             <Verbosity>FINER</Verbosity>
-            <OutputFile>stdout</OutputFile>
+            <OutputFile>durability.log</OutputFile>
         </Tracing>
         <Network>
             <Alignment>
