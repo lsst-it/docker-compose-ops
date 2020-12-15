@@ -90,10 +90,10 @@
             <DeliveryQueueMaxSamples>10000</DeliveryQueueMaxSamples>
             <SquashParticipants>true</SquashParticipants>
         </Internal>
-<!--         <Tracing>
+        <Tracing>
             <Verbosity>finer</Verbosity>
-            <OutputFile>stdout</OutputFile>
-        </Tracing> -->
+            <OutputFile>ddsi2.log</OutputFile>
+        </Tracing>
     </DDSI2Service>
     <DurabilityService name="durability">
         <Tracing>
