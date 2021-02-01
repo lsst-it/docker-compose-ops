@@ -1,0 +1,33 @@
+version: "3.6"
+
+services:
+
+  weatherstation1:
+    image: ts-dockerhub.lsst.org/weatherstation:${CYCLE}
+    container_name: weatherstation1
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - RUN_ARG=1
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - /tmp/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.220"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+networks:
+  default:
+    external:
+      name: dds-network
+  dds-network:
+    external: true

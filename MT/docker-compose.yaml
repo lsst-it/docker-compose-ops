@@ -1,0 +1,100 @@
+version: "3.6"
+
+services:
+
+  mtcamhexapod:
+    image: ts-dockerhub.lsst.org/hexapod:${CYCLE}
+    container_name: mtcamhexapod
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - RUN_ARG=1
+      - OSPL_INFOFILE=/tmp/ospl-info-mtcamhexapod.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-mtcamhexapod.log
+    volumes:
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /tmp/docker_tmp/:/tmp/
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.25"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  mtm2hexapod:
+    image: ts-dockerhub.lsst.org/hexapod:${CYCLE}
+    container_name: mtm2hexapod
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - RUN_ARG=2
+      - OSPL_INFOFILE=/tmp/ospl-info-mtm2hexapod.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-mtm2hexapod.log
+    volumes:
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /tmp/docker_tmp/:/tmp/
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.26"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  mtrotator:
+    image: ts-dockerhub.lsst.org/rotator:${CYCLE}
+    container_name: mtrotator
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - OSPL_INFOFILE=/tmp/ospl-info-mtrotator.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-mtrotator.log
+    volumes:
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /tmp/docker_tmp/:/tmp/
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.27"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  mtmount:
+    image: ts-dockerhub.lsst.org/mtmount:${CYCLE}
+    container_name: mtmount
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - OSPL_INFOFILE=/tmp/ospl-info-mtmount.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-mtmount.log
+    volumes:
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /tmp/docker_tmp/:/tmp/
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.28"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+networks:
+  default:
+    external:
+      name: dds-network
+  dds-network:
+    external: true
