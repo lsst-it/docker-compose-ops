@@ -22,6 +22,7 @@ services:
       - CSC_LIST=ATDome ATDomeTrajectory ATAOS ATPneumatics ATHexapod ATPtg ATMCS
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
@@ -50,6 +51,7 @@ services:
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
@@ -78,6 +80,7 @@ services:
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
@@ -102,10 +105,11 @@ services:
       - PARTITIONS=1
       - WAIT_ACK=1
       - REPLICATION=3
-      - CSC_LIST=MTRotator MTHexapod MTM2
+      - CSC_LIST=MTRotator MTHexapod MTM2 MTMount
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
@@ -134,6 +138,7 @@ services:
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
@@ -162,6 +167,7 @@ services:
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
@@ -190,6 +196,7 @@ services:
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
@@ -218,6 +225,7 @@ services:
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
@@ -246,6 +254,7 @@ services:
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
@@ -274,6 +283,7 @@ services:
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:
