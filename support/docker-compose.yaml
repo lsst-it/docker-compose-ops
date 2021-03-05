@@ -43,7 +43,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - /deploy-lsstts/docker_tmp/:/tmp/
       - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
