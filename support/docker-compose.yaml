@@ -20,7 +20,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
@@ -66,7 +66,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
@@ -89,7 +89,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
-      - /deploy-lsstts/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
