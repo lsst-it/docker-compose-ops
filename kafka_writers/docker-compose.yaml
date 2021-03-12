@@ -105,7 +105,7 @@ services:
       - PARTITIONS=1
       - WAIT_ACK=1
       - REPLICATION=3
-      - CSC_LIST=MTRotator MTHexapod MTM2 MTMount
+      - CSC_LIST=MTRotator MTHexapod MTM2 MTMount Script
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
