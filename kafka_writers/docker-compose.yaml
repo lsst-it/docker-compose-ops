@@ -1,12 +1,17 @@
+# Using this file requires the following environment files
+# - setup.env
+# - setup_kp.env
+
 version: '3.6'
 
 services:
 
   salkafka-auxtel:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_AUXTEL}
     container_name: salkafka-auxtel
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_AUXTEL}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -16,11 +21,10 @@ services:
       - WAIT_ACK=1
       - CSC_LIST=ATDome ATDomeTrajectory ATAOS ATPneumatics ATHexapod ATPtg ATMCS
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.240"
@@ -31,10 +35,11 @@ services:
         max-size: "10m"
 
   salkafka-comcam:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_COMCAM}
     container_name: salkafka-comcam
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_COMCAM}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -45,11 +50,10 @@ services:
       - CSC_LIST=CCHeaderService CCArchiver CCCamera
     stdin_open: true
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.241"
@@ -60,10 +64,11 @@ services:
         max-size: "10m"
 
   salkafka-m1m3:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_M1M3}
     container_name: salkafka-m1m3
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_M1M3}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -74,11 +79,10 @@ services:
       - CSC_LIST=--file m1m3.yaml
     stdin_open: true
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.242"
@@ -89,10 +93,11 @@ services:
         max-size: "10m"
 
   salkafka-m2:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_M2}
     container_name: salkafka-m2
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_M2}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -100,14 +105,13 @@ services:
       - PARTITIONS=1
       - WAIT_ACK=1
       - REPLICATION=3
-      - CSC_LIST=Rotator Hexapod MTM2
+      - CSC_LIST=MTRotator MTHexapod MTM2 MTMount Script
     stdin_open: true
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.243"
@@ -118,10 +122,11 @@ services:
         max-size: "10m"
 
   salkafka-latiss:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_LATISS}
     container_name: salkafka-latiss
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_LATISS}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -132,11 +137,10 @@ services:
       - CSC_LIST=ATArchiver ATCamera ATHeaderService ATSpectrograph
     stdin_open: true
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.244"
@@ -147,10 +151,11 @@ services:
         max-size: "10m"
 
   salkafka-maintel:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_MAINTEL}
     container_name: salkafka-maintel
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_MAINTEL}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -158,14 +163,13 @@ services:
       - PARTITIONS=1
       - WAIT_ACK=1
       - REPLICATION=3
-      - CSC_LIST=MTAOS Dome MTDomeTrajectory MTPtg
+      - CSC_LIST=MTAOS MTDome MTDomeTrajectory MTPtg
     stdin_open: true
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.245"
@@ -176,10 +180,11 @@ services:
         max-size: "10m"
 
   salkafka-mtmount:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_MTMOUNT}
     container_name: salkafka-mtmount
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_MTMOUNT}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -187,14 +192,13 @@ services:
       - PARTITIONS=1
       - WAIT_ACK=1
       - REPLICATION=3
-      - CSC_LIST=MTMount NewMTMount
+      - CSC_LIST=MTMount
     stdin_open: true
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.246"
@@ -205,10 +209,11 @@ services:
         max-size: "10m"
 
   salkafka-obssys:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_OBSSYS}
     container_name: salkafka-obssys
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_OBSSYS}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -219,11 +224,10 @@ services:
       - CSC_LIST=GenericCamera Scheduler Script ScriptQueue Watcher
     stdin_open: true
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.247"
@@ -234,10 +238,11 @@ services:
         max-size: "10m"
 
   salkafka-test:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_TEST}
     container_name: salkafka-test
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_TEST}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -248,11 +253,10 @@ services:
       - CSC_LIST=Test
     stdin_open: true
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.248"
@@ -262,11 +266,12 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  salkafka-test:
-    image: ts-dockerhub.lsst.org/salkafka:${CYCLE}
+  salkafka-eas:
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_EAS}
     container_name: salkafka-eas
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_EAS}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
       - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
@@ -277,11 +282,10 @@ services:
       - CSC_LIST=DIMM DSM WeatherStation
     stdin_open: true
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       dds-network:
         ipv4_address: "139.229.170.249"

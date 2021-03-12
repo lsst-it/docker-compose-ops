@@ -4,6 +4,7 @@ version: "3.6"
 # ospl-daemon1 - azar1.cp.lsst.org (master)
 # ospl-daemon2 - azar2.cp.lsst.org
 # ospl-daemon3 - amor01.cp.lsst.org
+# ospl-daemon4 - amor02.cp.lsst.org
 
 services:
 
@@ -42,7 +43,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
-      - /tmp/docker_tmp/:/tmp/
+      - /deploy-lsstts/docker_tmp/:/tmp/
       - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
@@ -78,6 +79,30 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
+
+  ospl-daemon4:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - /deploy-lsstts/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.30"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
 
 networks:
   default:
