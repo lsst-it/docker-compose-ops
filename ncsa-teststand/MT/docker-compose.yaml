@@ -12,11 +12,10 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-mtm1m3.log
       - OSPL_ERRORFILE=/tmp/ospl-error-mtm1m3.log
     volumes:
+      - ./m1m3_startup.sh:/home/saluser/.startup.sh
       - ${OSPL_SP_CONFIG}:${OSPL_MOUNT_POINT}
       - /tmp/docker_tmp/:/tmp/
     tty: true
-    ipc: host
-    pid: host
     networks:
       test-stand-network:
         ipv4_address: "141.142.238.136"
@@ -39,8 +38,6 @@ services:
       - ${OSPL_SP_CONFIG}:${OSPL_MOUNT_POINT}
       - /tmp/docker_tmp/:/tmp/
     tty: true
-    ipc: host
-    pid: host
     networks:
       test-stand-network:
         ipv4_address: "141.142.238.137"

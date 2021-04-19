@@ -6,7 +6,7 @@ services:
     image: ts-dockerhub.lsst.org/atmcs_sim:${CYCLE}
     container_name: atmcs-sim
     environment:
-      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
       - OSPL_MASTER_PRIORITY=0
       - OSPL_INFOFILE=/tmp/ospl-info-atmcs.log
@@ -15,8 +15,6 @@ services:
       - /tmp/docker_tmp/:/tmp/
       - ${OSPL_SP_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       test-stand-network:
         ipv4_address: "141.142.238.149"
@@ -30,7 +28,7 @@ services:
     image: ts-dockerhub.lsst.org/at_pneumatics_sim:${CYCLE}
     container_name: atpneumatics-sim
     environment:
-      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
       - OSPL_MASTER_PRIORITY=0
       - OSPL_INFOFILE=/tmp/ospl-info-atpneumatics.log
@@ -39,8 +37,6 @@ services:
       - /tmp/docker_tmp/:/tmp/
       - ${OSPL_SP_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     networks:
       test-stand-network:
         ipv4_address: "141.142.238.146"
