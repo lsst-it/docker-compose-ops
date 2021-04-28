@@ -3,7 +3,7 @@ version: "3.6"
 services:
 
   mtcamhexapod:
-    image: ts-dockerhub.lsst.org/hexapod:${CYCLE}
+    image: ts-dockerhub.lsst.org/mthexapod:${CYCLE}
     container_name: mtcamhexapod
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
@@ -16,9 +16,7 @@ services:
     tty: true
     ipc: host
     pid: host
-    networks:
-      dds-network:
-        ipv4_address: "139.229.170.25"
+    network_mode: host
     logging:
       driver: "json-file"
       options:
@@ -26,7 +24,7 @@ services:
         max-size: "10m"
 
   mtm2hexapod:
-    image: ts-dockerhub.lsst.org/hexapod:${CYCLE}
+    image: ts-dockerhub.lsst.org/mthexapod:${CYCLE}
     container_name: mtm2hexapod
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
@@ -39,9 +37,7 @@ services:
     tty: true
     ipc: host
     pid: host
-    networks:
-      dds-network:
-        ipv4_address: "139.229.170.26"
+    network_mode: host
     logging:
       driver: "json-file"
       options:
@@ -49,7 +45,7 @@ services:
         max-size: "10m"
 
   mtrotator:
-    image: ts-dockerhub.lsst.org/rotator:${CYCLE}
+    image: ts-dockerhub.lsst.org/mtrotator:${CYCLE}
     container_name: mtrotator
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
@@ -61,9 +57,7 @@ services:
     tty: true
     ipc: host
     pid: host
-    networks:
-      dds-network:
-        ipv4_address: "139.229.170.27"
+    network_mode: host
     logging:
       driver: "json-file"
       options:
