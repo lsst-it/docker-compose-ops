@@ -1,0 +1,53 @@
+version: "3.6"
+
+services:
+
+  test42:
+    image: ts-dockerhub.lsst.org/deploy-env:${CYCLE}
+    container_name: test
+    environment:
+      - LSST_DDS_DOMAIN_ID=${SHADOW_DOMAIN_ID}
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - RUN_ARG=42
+      - OSPL_INFOFILE=/tmp/ospl-info-test.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-test.log
+    volumes:
+      - ./test_startup.sh:/home/saluser/.startup.sh
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+  test412:
+    image: ts-dockerhub.lsst.org/deploy-env:${CYCLE}
+    container_name: test
+    environment:
+      - LSST_DDS_DOMAIN_ID=${SHADOW_DOMAIN_ID}
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - RUN_ARG=412
+      - OSPL_INFOFILE=/tmp/ospl-info-test.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-test.log
+    volumes:
+      - ./test_startup.sh:/home/saluser/.startup.sh
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+networks:
+  default:
+    external:
+      name: dds-network
+  dds-network:
+    external: true

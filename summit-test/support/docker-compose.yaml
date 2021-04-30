@@ -1,0 +1,90 @@
+version: "3.6"
+
+# The different daemons are meant for different summit machines:
+# ospl-daemon1 - trewa01.cp.lsst.org (master)
+# ospl-daemon2 - trewa02.cp.lsst.org
+# ospl-daemon3 - trewa03.cp.lsst.org
+
+services:
+
+  ospl-daemon1:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_DOMAIN_ID=${SHADOW_DOMAIN_ID}
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_ALIGNEE=Initial
+      - LSST_DDS_ALIGNER=true
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_MASTER_PRIORITY=201
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.26"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ospl-daemon2:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_DOMAIN_ID=${SHADOW_DOMAIN_ID}
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - /deploy-lsstts/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.27"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ospl-daemon3:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_DOMAIN_ID=${SHADOW_DOMAIN_ID}
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.166.29"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+networks:
+  default:
+    external:
+      name: dds-network
+  dds-network:
+    external: true
