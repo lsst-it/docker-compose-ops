@@ -1,0 +1,111 @@
+version: "3.4"
+
+# The different daemons are meant for different NCSA machines:
+# ospl-daemon1 - lsst-teststand-ts1.ncsa.illinois.edu
+# ospl-daemon2 - lsst-teststand-ts2.ncsa.illinois.edu
+# ospl-daemon3 - lsst-nts-ts3.ncsa.illinois.edu
+# ospl-daemon4 - lsst-l1-cl-ocs.ncsa.illinois.edu (master)
+
+services:
+
+  ospl-daemon1:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - /tmp/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      test-stand-network:
+        ipv4_address: "141.142.238.120"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ospl-daemon2:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - /tmp/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      test-stand-network:
+        ipv4_address: "141.142.238.121"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ospl-daemon3:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - /tmp/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      test-stand-network:
+        ipv4_address: "141.142.238.122"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ospl-daemon4:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_DDS_ALIGNEE=Initial
+      - LSST_DDS_ALIGNER=true
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_MASTER_PRIORITY=201
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - /tmp/docker_tmp/:/tmp/
+      - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    networks:
+      test-stand-network:
+        ipv4_address: "141.142.238.123"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+networks:
+  default:
+    external:
+      name: test-stand-network
+  test-stand-network:
+    external: true
