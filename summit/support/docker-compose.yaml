@@ -5,6 +5,7 @@ version: "3.6"
 # ospl-daemon2 - azar2.cp.lsst.org
 # ospl-daemon3 - amor01.cp.lsst.org
 # ospl-daemon4 - amor02.cp.lsst.org
+# ospl-daemon5 - hexrot.cp.lsst.org
 
 services:
 
@@ -103,6 +104,26 @@ services:
         max-file: "5"
         max-size: "10m"
 
+  ospl-daemon5:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
 
 networks:
   default:
