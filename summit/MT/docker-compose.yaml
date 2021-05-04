@@ -86,6 +86,66 @@ services:
         max-file: "5"
         max-size: "10m"
 
+  mtm2-sim:
+    image: ts-dockerhub.lsst.org/m2:${CYCLE}
+    container_name: mtm2-sim
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - OSPL_INFOFILE=/tmp/ospl-info-mtm2.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-mtm2.log
+    volumes:
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  mtcamhexapod-sim:
+    image: ts-dockerhub.lsst.org/mthexapod:${CYCLE}
+    container_name: mtcamhexapod-sim
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - RUN_ARG=--simulate 1
+      - OSPL_INFOFILE=/tmp/ospl-info-mtcamhexapod.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-mtcamhexapod.log
+    volumes:
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  mtm2hexapod-sim:
+    image: ts-dockerhub.lsst.org/mthexapod:${CYCLE}
+    container_name: mtm2hexapod-sim
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - RUN_ARG=--simulate 2
+      - OSPL_INFOFILE=/tmp/ospl-info-mtm2hexapod.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-mtm2hexapod.log
+    volumes:
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+    tty: true
+    ipc: host
+    pid: host
+    network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
 networks:
   default:
     external:
