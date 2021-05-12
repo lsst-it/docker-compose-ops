@@ -51,7 +51,7 @@ services:
     pid: host
     networks:
       dds-network:
-        ipv4_address: "139.229.170.27"
+        ipv4_address: "139.229.166.29"
     logging:
       driver: "json-file"
       options:
@@ -75,7 +75,7 @@ services:
     pid: host
     networks:
       dds-network:
-        ipv4_address: "139.229.166.29"
+        ipv4_address: "139.229.170.27"
     logging:
       driver: "json-file"
       options:
