@@ -2,7 +2,7 @@
 
 source $HOME/.setup_sal_env.sh
 
-(ospl start >>/tmp/messages 2>&1 && \
+(ospl start | tee /tmp/messages && \
 sleep 2 && \
 chmod a+rw $(ls -t /tmp/spdds* | head -n 1) && \
 echo "# - ospl daemon ready" ) && \
