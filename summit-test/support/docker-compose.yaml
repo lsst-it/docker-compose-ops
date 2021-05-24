@@ -51,7 +51,7 @@ services:
     pid: host
     networks:
       dds-network:
-        ipv4_address: "139.229.170.27"
+        ipv4_address: "139.229.166.29"
     logging:
       driver: "json-file"
       options:
@@ -65,9 +65,12 @@ services:
       - LSST_DDS_DOMAIN_ID=${SHADOW_DOMAIN_ID}
       - LSST_DDS_PARTITION_PREFIX=summit
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - LSST_DDSI2_SERVICE_TRACING_OUTPUT=stdout
+      - LSST_DURABILITY_SERVICE_TRACING_OUTPUT=stdout
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
+      - ./daemon_startup.sh:/home/saluser/.startup.sh
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
@@ -75,7 +78,7 @@ services:
     pid: host
     networks:
       dds-network:
-        ipv4_address: "139.229.166.29"
+        ipv4_address: "139.229.170.27"
     logging:
       driver: "json-file"
       options:

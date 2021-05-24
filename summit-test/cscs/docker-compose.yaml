@@ -13,11 +13,13 @@ services:
       - OSPL_ERRORFILE=/tmp/ospl-error-test.log
     volumes:
       - ./test_startup.sh:/home/saluser/.startup.sh
+      - ${TS_CONFIG_OCS}:/opt/lsst/software/ts_config_ocs
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
     pid: host
+    network_mode: host
     logging:
       driver: "json-file"
       options:
@@ -34,11 +36,13 @@ services:
       - OSPL_ERRORFILE=/tmp/ospl-error-test.log
     volumes:
       - ./test_startup.sh:/home/saluser/.startup.sh
+      - ${TS_CONFIG_OCS}:/opt/lsst/software/ts_config_ocs
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
     pid: host
+    network_mode: host
     logging:
       driver: "json-file"
       options:
