@@ -1,0 +1,54 @@
+version: "3.6"
+
+services:
+
+  atmcs-sim:
+    image: ts-dockerhub.lsst.org/atmcs_sim:${CYCLE}
+    container_name: atmcs-sim
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_MASTER_PRIORITY=0
+      - OSPL_INFOFILE=/tmp/ospl-info-atmcs.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-atmcs.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SP_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    networks:
+      test-stand-network:
+        ipv4_address: "141.142.238.149"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  atpneumatics-sim:
+    image: ts-dockerhub.lsst.org/at_pneumatics_sim:${CYCLE}
+    container_name: atpneumatics-sim
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_MASTER_PRIORITY=0
+      - OSPL_INFOFILE=/tmp/ospl-info-atpneumatics.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-atpneumatics.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SP_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    networks:
+      test-stand-network:
+        ipv4_address: "141.142.238.146"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+networks:
+  default:
+    external:
+      name: test-stand-network
+  test-stand-network:
+    external: true
