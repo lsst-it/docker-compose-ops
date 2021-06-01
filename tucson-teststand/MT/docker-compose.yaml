@@ -7,18 +7,16 @@ services:
     container_name: mtm1m3-sim
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
-      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
       - OSPL_MASTER_PRIORITY=0
       - OSPL_INFOFILE=/tmp/ospl-info-mtm1m3.log
       - OSPL_ERRORFILE=/tmp/ospl-error-mtm1m3.log
     volumes:
-      - ./m1m3_startup.sh:/home/saluser/.startup.sh
-      - ${OSPL_SP_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
     tty: true
-    networks:
-      test-stand-network:
-        ipv4_address: "141.142.238.136"
+    ipc: host
+    pid: host
+    network_mode: host
     logging:
       driver: "json-file"
       options:
@@ -30,17 +28,16 @@ services:
     container_name: mtm2-sim
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
-      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
       - OSPL_MASTER_PRIORITY=0
       - OSPL_INFOFILE=/tmp/ospl-info-mtm2.log
       - OSPL_ERRORFILE=/tmp/ospl-error-mtm2.log
     volumes:
-      - ${OSPL_SP_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
     tty: true
-    networks:
-      test-stand-network:
-        ipv4_address: "141.142.238.137"
+    ipc: host
+    pid: host
+    network_mode: host
     logging:
       driver: "json-file"
       options:
