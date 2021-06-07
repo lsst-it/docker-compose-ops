@@ -1,0 +1,25 @@
+version: "3.6"
+
+services:
+  pmd:
+    image: ts-dockerhub.lsst.org/pmd:${CYCLE}
+    container_name: pmd
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - RUN_ARG=1
+      - OSPL_INFOFILE=/tmp/ospl-info-pmd.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-pmd.log
+    volumes:
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    tty: true
+    ipc: host
+    pid: host
+    network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
