@@ -1,13 +1,13 @@
 version: "3.6"
 
 # The different daemons are meant for different summit machines:
-# ospl-daemon1 - trewa01.cp.lsst.org (master)
-# ospl-daemon2 - trewa02.cp.lsst.org
-# ospl-daemon3 - trewa03.cp.lsst.org
+# ospl-trewa01 - trewa01.cp.lsst.org (master)
+# ospl-trewa02 - trewa02.cp.lsst.org
+# ospl-trewa03 - trewa03.cp.lsst.org
 
 services:
 
-  ospl-daemon1:
+  ospl-trewa01:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
     container_name: ospl-daemon
     environment:
@@ -34,7 +34,7 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  ospl-daemon2:
+  ospl-trewa02:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
     container_name: ospl-daemon
     environment:
@@ -58,7 +58,7 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  ospl-daemon3:
+  ospl-trewa03:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
     container_name: ospl-daemon
     environment:
