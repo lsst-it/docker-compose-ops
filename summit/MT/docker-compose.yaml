@@ -64,26 +64,6 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  mtmount:
-    image: ts-dockerhub.lsst.org/mtmount:${CYCLE}
-    container_name: mtmount
-    environment:
-      - LSST_DDS_PARTITION_PREFIX=summit
-      - OSPL_INFOFILE=/tmp/ospl-info-mtmount.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-mtmount.log
-    volumes:
-      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
-    tty: true
-    ipc: host
-    pid: host
-    network_mode: host
-    logging:
-      driver: "json-file"
-      options:
-        max-file: "5"
-        max-size: "10m"
-
   mtm2-sim:
     image: ts-dockerhub.lsst.org/m2:${CYCLE}
     container_name: mtm2-sim
