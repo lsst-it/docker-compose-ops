@@ -77,9 +77,7 @@ services:
     tty: true
     ipc: host
     pid: host
-    networks:
-      dds-network:
-        ipv4_address: "139.229.170.28"
+    network_mode: host
     logging:
       driver: "json-file"
       options:
@@ -145,10 +143,3 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
-
-networks:
-  default:
-    external:
-      name: dds-network
-  dds-network:
-    external: true
