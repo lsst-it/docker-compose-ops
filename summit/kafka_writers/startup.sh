@@ -1,5 +1,6 @@
 #!/bin/bash
 source .setup_sal_env.sh
+export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem-debug.xml').as_uri())")
 export LSST_DDS_ALIGNER=true
 export LSST_DDS_ALIGNEE=Initial
 export OSPL_MASTER_PRIORITY=200
