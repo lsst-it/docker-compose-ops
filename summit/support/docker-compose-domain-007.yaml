@@ -10,7 +10,7 @@ services:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
     container_name: ospl-daemon-domain-007
     environment:
-      - OSPL_SP_DDSI_NAME=ospl_sp_ddsi_7
+      - LSST_DDS_DOMAIN_NAME=ospl_sp_ddsi_7
       - LSST_DDS_DOMAIN_ID=7
       - LSST_DDS_PARTITION_PREFIX=summit
       - LSST_DDS_ALIGNEE=Initial

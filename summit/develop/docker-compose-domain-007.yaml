@@ -10,8 +10,8 @@ services:
     image: ts-dockerhub.lsst.org/develop-env:develop
     container_name: develop-env-domain-007
     environment:
-      - OSPL_SP_DDSI_NAME=ospl_sp_ddsi_7
-      - LSST_DDS_DOMAIN_ID=7      
+      - LSST_DDS_DOMAIN_NAME=ospl_sp_ddsi_7
+      - LSST_DDS_DOMAIN_ID=7
       - LSST_DDS_PARTITION_PREFIX=summit
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
