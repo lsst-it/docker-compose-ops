@@ -7,7 +7,7 @@ version: "3.6"
 services:
 
   develop-env-domain-007:
-    image: ts-dockerhub.lsst.org/develop-env:develop
+    image: ts-dockerhub.lsst.org/develop-env:c0021.000
     container_name: develop-env-domain-007
     environment:
       - LSST_DDS_DOMAIN_NAME=ospl_sp_ddsi_7
@@ -17,6 +17,7 @@ services:
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
     pid: host
