@@ -27,7 +27,6 @@ services:
     tty: true
     ipc: host
     pid: host
-    network_mode: host
     logging:
       driver: "json-file"
       options:

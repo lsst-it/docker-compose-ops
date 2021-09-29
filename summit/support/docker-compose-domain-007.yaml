@@ -13,7 +13,6 @@ services:
       - LSST_DDS_DOMAIN_NAME=ospl_sp_ddsi_${DOMAINID_EAS}
       - LSST_DDS_DOMAIN_ID=${DOMAINID_EAS}
       - LSST_DDS_PARTITION_PREFIX=summit
-      - LSST_DDS_INTERFACE=em2.1400
       - LSST_DDS_ALIGNEE=Initial
       - LSST_DDS_ALIGNER=true
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
@@ -26,9 +25,18 @@ services:
     tty: true
     ipc: host
     pid: host
-    network_mode: host
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.249"
     logging:
       driver: "json-file"
       options:
         max-file: "5"
         max-size: "10m"
+
+networks:
+  default:
+    external:
+      name: dds-network
+  dds-network:
+    external: true
