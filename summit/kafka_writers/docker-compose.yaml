@@ -283,8 +283,8 @@ services:
       - CSC_LIST=DIMM DSM WeatherStation ESS HVAC
     stdin_open: true
     volumes:
-      # - startup.sh:/home/saluser/.startup.sh
-      # - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
+      - startup.sh:/home/saluser/.startup.sh
+      - ${TS_IDL_DIRECTORY}:/opt/lsst/software/stack/miniconda/lib/python3.7/idl
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     networks:

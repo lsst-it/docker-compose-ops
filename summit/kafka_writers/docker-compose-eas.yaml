@@ -1,0 +1,35 @@
+# Using this file requires the following environment files
+# - setup.env
+# - setup_kp.env
+
+version: '3.6'
+
+services:
+  salkafka-eas:
+    image: ts-dockerhub.lsst.org/salkafka:${CYCLE_EAS}
+    container_name: salkafka-eas
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_NAME=ospl_sp_ddsi_${DOMAINID_EAS}
+      - LSST_DDS_DOMAIN_ID=${DOMAINID_EAS}
+      - BROKER_IP=kafka-0-summit-efd.lsst.codes
+      - BROKER_PORT=31090
+      - REGISTRY_ADDR=https://schema-registry-summit-efd.lsst.codes
+      - LOG_LEVEL=20
+      - PARTITIONS=1
+      - WAIT_ACK=1
+      - REPLICATION=3
+      - CSC_LIST=DIMM DSM WeatherStation ESS HVAC
+    stdin_open: true
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
