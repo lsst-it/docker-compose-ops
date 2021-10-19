@@ -12,7 +12,7 @@ services:
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
-      - LSST_DDS_INTERFACE=p1p2
+      - LSST_DDS_INTERFACE=dds
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
@@ -34,7 +34,7 @@ services:
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
-      - LSST_DDS_INTERFACE=ens6f1
+      - LSST_DDS_INTERFACE=dds
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
