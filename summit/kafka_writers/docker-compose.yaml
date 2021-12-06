@@ -271,6 +271,7 @@ services:
     container_name: salkafka-eas
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_DOMAIN_NAME=ospl_sp_ddsi_${DOMAINID_EAS}
       - LSST_DDS_DOMAIN_ID=${DOMAINID_EAS}
       - BROKER_IP=kafka-0-summit-efd.lsst.codes
       - BROKER_PORT=31090
@@ -279,7 +280,7 @@ services:
       - PARTITIONS=1
       - WAIT_ACK=1
       - REPLICATION=3
-      - CSC_LIST=DIMM DSM WeatherStation
+      - CSC_LIST=DIMM DSM WeatherStation ESS HVAC
     stdin_open: true
     volumes:
       - startup.sh:/home/saluser/.startup.sh
