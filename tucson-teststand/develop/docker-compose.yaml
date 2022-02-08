@@ -1,0 +1,21 @@
+version: "3.6"
+
+services:
+
+  develop-env:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: develop-env
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
