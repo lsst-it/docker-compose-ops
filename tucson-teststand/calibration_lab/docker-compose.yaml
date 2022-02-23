@@ -1,0 +1,112 @@
+version: "3.6"
+
+services:
+
+  electrometer:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: electrometer
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ~/develop/setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  atmonochromator:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: atmonochromator
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ~/develop/setup_dev_atmonochromator.sh:/home/saluser/.setup_dev.sh
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  fiberspectrograph:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: fiberspectrograph
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
+      - ~/develop:/home/saluser/develop
+      - ~/develop/setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/usb/bus:/dev/usb/bus
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  igusxaxis:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: igusxaxis
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ~/develop/setup_dev_linearstage.sh:/home/saluser/.setup_dev.sh
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  igusyaxis:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: igusyaxis
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ~/develop/setup_dev_linearstage.sh:/home/saluser/.setup_dev.sh
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+
