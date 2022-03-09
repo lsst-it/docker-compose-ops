@@ -2,17 +2,42 @@ version: "3.6"
 
 services:
 
-  electrometer:
+  electrometer1: # index1, For use on Loonie with the AuxTel Illumination System
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
-    container_name: electrometer
+    container_name: electrometer1
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=1
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
-      - ~/develop/setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
+      - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  electrometer2: # index2, For use on Toonie with the CIMACS
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: electrometer2
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=2
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
     privileged: true
@@ -35,7 +60,7 @@ services:
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
-      - ~/develop/setup_dev_atmonochromator.sh:/home/saluser/.setup_dev.sh
+      - ./setup_dev_atmonochromator.sh:/home/saluser/.setup_dev.sh
     tty: true
     ipc: host
     pid: host
@@ -45,18 +70,23 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  fiberspectrograph:
+  fiberspectrograph_broadband: # index 3 to be used with the AuxTel Illumination System
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
-    container_name: fiberspectrograph
+    container_name: fiberspectrograph_broadband
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=3
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
       - ~/develop:/home/saluser/develop
-      - ~/develop/setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
+      - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
     devices:
       - /dev/usb/bus:/dev/usb/bus
     privileged: true
@@ -69,7 +99,8 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  igusxaxis:
+
+  igusxaxis: # Along the floor, generally index 1
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: igusxaxis
     environment:
@@ -79,7 +110,7 @@ services:
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
-      - ~/develop/setup_dev_linearstage.sh:/home/saluser/.setup_dev.sh
+      - ./setup_dev_linearstage.sh:/home/saluser/.setup_dev.sh
     tty: true
     ipc: host
     pid: host
@@ -89,7 +120,7 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  igusyaxis:
+  igusyaxis: # vertical, generally index 2
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: igusyaxis
     environment:
@@ -99,7 +130,7 @@ services:
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
-      - ~/develop/setup_dev_linearstage.sh:/home/saluser/.setup_dev.sh
+      - ./setup_dev_linearstage.sh:/home/saluser/.setup_dev.sh
     tty: true
     ipc: host
     pid: host
@@ -108,5 +139,3 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
-
-
