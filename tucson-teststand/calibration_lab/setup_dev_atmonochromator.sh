@@ -22,7 +22,6 @@ export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.ge
 echo "Building new idl's due to enumeration change"
 make_idl_files.py ATMonochromator
 
-#echo "User must manually exec into container to rebuild the idl files due to enumeration changes"
-#/bin/bash --rcfile /home/saluser/.bashrc
 echo "# Launching atmonochromator CSC"
 python /home/saluser/develop/ts_atmonochromator/bin/atmonochromator_csc.py
+#/bin/bash --rcfile /home/saluser/.bashrc

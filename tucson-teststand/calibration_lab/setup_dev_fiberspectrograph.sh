@@ -18,7 +18,6 @@ echo '#Installing dependencies and declaring OSPL_URI'
 export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")
 echo 'Setting up LFA'
 export S3_ENDPOINT_URL=https://s3.tu.lsst.org
-source /deploy-lsstts/.lfa_cred.sh
 
 echo "# Launching FiberSpectrograph with CSC_INDEX=$CSC_INDEX"
 python /home/saluser/develop/ts_FiberSpectrograph/bin/run_FiberSpectrograph.py ${CSC_INDEX} 
