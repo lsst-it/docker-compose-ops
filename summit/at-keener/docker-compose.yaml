@@ -11,6 +11,7 @@ services:
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
     tty: true
