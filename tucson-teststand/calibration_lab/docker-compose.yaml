@@ -7,6 +7,7 @@ services:
     container_name: electrometer1
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=1
@@ -31,6 +32,7 @@ services:
     container_name: electrometer2
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=2
@@ -55,6 +57,7 @@ services:
     container_name: atmonochromator
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
@@ -75,6 +78,7 @@ services:
     container_name: fiberspectrograph_broadband
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=3
@@ -105,6 +109,7 @@ services:
     container_name: igusxaxis
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
@@ -125,6 +130,7 @@ services:
     container_name: igusyaxis
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
