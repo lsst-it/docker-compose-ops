@@ -3,6 +3,7 @@ version: "3.6"
 # The different daemons are meant for different Tucson machines:
 # ospl-love1 - love1
 # ospl-telhw01 - tel-hw01
+# ospl-loonie - loonie.tu.lsst.org
 
 services:
 
@@ -50,3 +51,24 @@ services:
         max-file: "5"
         max-size: "10m"
 
+  ospl-loonie:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - LSST_DDS_INTERFACE=enp1s0.3085
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
