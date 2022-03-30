@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
 
-  electrometer1: # index1, For use on Loonie with the AuxTel Illumination System
+  electrometer1: # index1, for use on Loonie with the AuxTel Illumination System
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer1
     environment:
@@ -27,7 +27,7 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  electrometer2: # index2, For use on Toonie with the CIMACS
+  electrometer2: # index2, for use on Toonie with the CIMACS
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer2
     environment:
@@ -112,6 +112,7 @@ services:
       - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=1
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
@@ -125,7 +126,7 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  igusyaxis: # vertical, generally index 2
+  igusyaxis: # Vertical, generally index 2
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: igusyaxis
     environment:
@@ -133,6 +134,7 @@ services:
       - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=2
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
