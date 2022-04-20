@@ -8,6 +8,7 @@ services:
     environment:
       - LSST_DDS_DOMAIN_ID=${SHADOW_DOMAIN_ID}
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_SITE=summit
       - RUN_ARG=42
       - OSPL_INFOFILE=/tmp/ospl-info-test.log
       - OSPL_ERRORFILE=/tmp/ospl-error-test.log
@@ -31,6 +32,7 @@ services:
     environment:
       - LSST_DDS_DOMAIN_ID=${SHADOW_DOMAIN_ID}
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_SITE=summit
       - RUN_ARG=412
       - OSPL_INFOFILE=/tmp/ospl-info-test.log
       - OSPL_ERRORFILE=/tmp/ospl-error-test.log

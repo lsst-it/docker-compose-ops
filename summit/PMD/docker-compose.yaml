@@ -6,6 +6,7 @@ services:
     container_name: pmd
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_SITE=summit
       - RUN_ARG=1
       - OSPL_INFOFILE=/tmp/ospl-info-pmd.log
       - OSPL_ERRORFILE=/tmp/ospl-error-pmd.log

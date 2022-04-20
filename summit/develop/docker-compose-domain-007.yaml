@@ -13,6 +13,7 @@ services:
       - LSST_DDS_DOMAIN_NAME=ospl_sp_ddsi_7
       - LSST_DDS_DOMAIN_ID=7
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_SITE=summit
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
