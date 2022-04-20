@@ -26,6 +26,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    restart: on-failure
     networks:
       dds-network:
         ipv4_address: "139.229.170.22"
@@ -49,6 +50,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    restart: on-failure
     networks:
       dds-network:
         ipv4_address: "139.229.170.24"
@@ -72,6 +74,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    restart: on-failure
     networks:
       dds-network:
         ipv4_address: "139.229.170.29"
@@ -95,6 +98,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    restart: on-failure
     networks:
       dds-network:
         ipv4_address: "139.229.170.30"
@@ -118,6 +122,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    restart: on-failure
     network_mode: host
     logging:
       driver: "json-file"

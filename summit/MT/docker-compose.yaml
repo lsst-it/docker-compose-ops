@@ -22,3 +22,23 @@ services:
       options:
         max-file: "5"
         max-size: "100m"
+
+  mtmount:
+    image: ts-dockerhub.lsst.org/mtmount:${CYCLE}
+    container_name: mtmount
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - OSPL_MASTER_PRIORITY=0
+      - OSPL_INFOFILE=/tmp/ospl-info-mtmount.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-mtmount.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "100m"
