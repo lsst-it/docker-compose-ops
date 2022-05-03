@@ -102,6 +102,31 @@ services:
         max-file: "5"
         max-size: "10m"
 
+  electrometer5: # index5, for use with CIMACs, 3rd sensor, placement not decided
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: electrometer5
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=5
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
   atmonochromator:
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: atmonochromator
@@ -197,3 +222,25 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
+
+  laser:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: laser
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_tunablelaser.sh:/home/saluser/.setup_dev.sh
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+        
