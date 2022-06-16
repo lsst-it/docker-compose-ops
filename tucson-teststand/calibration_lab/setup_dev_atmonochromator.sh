@@ -15,7 +15,6 @@ echo "# Running custom setups of repos"
 setup -j ts_config_atcalsys -r ~/develop/ts_config_atcalsys
 setup -j ts_config_ocs -r ~/develop/ts_config_ocs
 setup -j ts_atmonochromator -r ~/develop/ts_atmonochromator
-setup -j ts_idl -r ~/develop/ts_idl
 
 export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")
 
