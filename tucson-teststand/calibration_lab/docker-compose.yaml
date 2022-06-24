@@ -2,11 +2,12 @@ version: "3.6"
 
 services:
 
-  electrometer1: # index1, For use on Loonie with the AuxTel Illumination System
+  electrometer1: # index1, for use on Loonie with the AuxTel Illumination System
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer1
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=1
@@ -26,14 +27,90 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  electrometer2: # index2, For use on Toonie with the CIMACS
+  electrometer2: # index2, for use on Toonie with the CIMACS
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer2
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=2
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  electrometer3: # index3, for use with the laser Fiber Coupler
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: electrometer3
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=3
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  electrometer4: # index4, for use with CIMACs, 2nd sensor
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: electrometer4
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=4
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  electrometer5: # index5, for use with CIMACs, 3rd sensor, placement not decided
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: electrometer5
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=5
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
@@ -55,6 +132,7 @@ services:
     container_name: atmonochromator
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
@@ -75,6 +153,7 @@ services:
     container_name: fiberspectrograph_broadband
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=3
@@ -105,8 +184,10 @@ services:
     container_name: igusxaxis
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=1
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
@@ -120,13 +201,15 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  igusyaxis: # vertical, generally index 2
+  igusyaxis: # Vertical, generally index 2
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: igusyaxis
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=2
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
@@ -139,3 +222,25 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
+
+  laser:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: laser
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_tunablelaser.sh:/home/saluser/.setup_dev.sh
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+        

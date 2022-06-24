@@ -8,6 +8,7 @@ setup ts_idl -t current
 setup ts_sal -t current
 setup ts_salobj -t current
 setup ts_xml -t current
+setup ts_tcpip -t current
 
 echo "# Running custom setups of repos"
 setup -j ts_electrometer -r ~/develop/ts_electrometer
