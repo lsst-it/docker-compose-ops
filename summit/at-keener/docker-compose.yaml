@@ -7,6 +7,7 @@ services:
     container_name: develop-env
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_SITE=summit
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:

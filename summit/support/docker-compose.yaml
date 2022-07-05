@@ -3,8 +3,8 @@ version: "3.6"
 # The different daemons are meant for different summit machines:
 # ospl-azar1 - azar1.cp.lsst.org (master)
 # ospl-azar2 - azar2.cp.lsst.org
-# ospl-amor01 - amor01.cp.lsst.org
-# ospl-amor02 - amor02.cp.lsst.org
+# ospl-love01 - love01.cp.lsst.org
+# ospl-love02 - love02.cp.lsst.org
 # ospl-atkeener - at-keener.cp.lsst.org
 
 services:
@@ -60,7 +60,7 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  ospl-amor01:
+  ospl-love01:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
     container_name: ospl-daemon
     environment:
@@ -84,7 +84,7 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  ospl-amor02:
+  ospl-love02:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
     container_name: ospl-daemon
     environment:

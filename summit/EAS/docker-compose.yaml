@@ -7,6 +7,7 @@ services:
     container_name: weatherstation1
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_SITE=summit
       - RUN_ARG=1
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
