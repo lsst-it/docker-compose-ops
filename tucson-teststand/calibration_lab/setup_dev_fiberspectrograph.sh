@@ -20,5 +20,5 @@ echo 'Setting up LFA'
 export S3_ENDPOINT_URL=https://s3.tu.lsst.org
 
 echo "# Launching FiberSpectrograph with CSC_INDEX=$CSC_INDEX"
-python /home/saluser/develop/ts_FiberSpectrograph/bin/run_FiberSpectrograph.py ${CSC_INDEX} 
+python /home/saluser/develop/ts_FiberSpectrograph/bin/run_fiberspectrograph ${CSC_INDEX} 
 #/bin/bash --rcfile /home/saluser/.bashrc
