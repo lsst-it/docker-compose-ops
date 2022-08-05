@@ -12,6 +12,7 @@ setup ts_tcpip -t current
 
 echo "Running custom setups of repos"
 setup -j ts_config_atcalsys -r ~/develop/ts_config_atcalsys
+setup -j ts_atwhitelight -r ~/develop/ts_atwhitelight
 
 # echo 'Installing dependencies and declaring OSPL_URI'
 # pip install -e develop/ts_TunableLaser/[dev]
