@@ -19,5 +19,5 @@ pip install pyserial  # conda takes too long
 export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")
 
 echo "# Launching electrometer with CSC_INDEX=$CSC_INDEX"
-python /home/saluser/develop/ts_electrometer/bin/run_electrometer.py ${CSC_INDEX} 
+python /home/saluser/develop/ts_electrometer/bin/run_electrometer ${CSC_INDEX} 
 #/bin/bash --rcfile /home/saluser/.bashrc

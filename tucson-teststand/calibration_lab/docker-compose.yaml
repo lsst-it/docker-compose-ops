@@ -127,6 +127,31 @@ services:
         max-file: "5"
         max-size: "10m"
 
+  electrometer6: # index 6, laser monitor
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: electrometer6
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=6
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
   atmonochromator:
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: atmonochromator
@@ -243,4 +268,45 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
-        
+
+  atwhitelight:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: atwhitelight
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_atwhitelight.sh:/home/saluser/.setup_dev.sh
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  cbp:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: cbp
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_cbp.sh:/home/saluser/.setup_dev.sh
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"

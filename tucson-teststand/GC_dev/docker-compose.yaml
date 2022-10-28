@@ -1,18 +1,23 @@
 version: "3.6"
 
 services:
-
-  develop-env:
+  gc-dev:
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
-    container_name: develop-env
+    container_name: gc-dev
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
       - LSST_SITE=${LSST_SITE}
-      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - OSPL_INFOFILE=/tmp/ospl-info-gc-dev.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-gc-dev.log
+      - S3_ENDPOINT_URL=https://s3.tu.lsst.org
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /deploy-lsstts/develop:/home/saluser/develop
     tty: true
     ipc: host
     pid: host
@@ -21,15 +26,17 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
-  lfa-dev-env:
+  gchs-dev:
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
-    container_name: lfa-dev-env
+    container_name: gchs-dev
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
       - LSST_SITE=${LSST_SITE}
-      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - OSPL_INFOFILE=/tmp/ospl-info-gchs-dev.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-gchs-dev.log
       - S3_ENDPOINT_URL=https://s3.tu.lsst.org
+      - URL_SPEC=--lfa_mode s3 --s3instance tuc
+      - TSTAND_HEADERSERVICE=TUCSON
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}

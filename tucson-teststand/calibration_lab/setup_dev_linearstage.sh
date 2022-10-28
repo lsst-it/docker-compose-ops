@@ -28,5 +28,5 @@ pip install develop/ts_LinearStage/.[dev]
 export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")
 
 echo "# Launching ts_LinearStage with CSC_INDEX=$CSC_INDEX"
-python /home/saluser/develop/ts_LinearStage/bin/run_linearstage_csc.py ${CSC_INDEX} 
+python /home/saluser/develop/ts_LinearStage/bin/run_linearstage ${CSC_INDEX} 
 /bin/bash --rcfile /home/saluser/.bashrc
