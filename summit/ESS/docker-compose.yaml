@@ -15,7 +15,7 @@ services:
       rubin:
         ipv4_address: "hexrot-ess01.cp.lsst.org"
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -33,7 +33,7 @@ services:
       rubin:
         ipv4_address: "mtdome-ess01.cp.lsst.org"
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -51,7 +51,7 @@ services:
       rubin:
         ipv4_address: "mtdome-ess02.cp.lsst.org"
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -69,7 +69,7 @@ services:
       rubin:
         ipv4_address: "mtdome-ess03.cp.lsst.org"
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -87,7 +87,7 @@ services:
       rubin:
         ipv4_address: "auxtel-ess01.cp.lsst.org"
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
