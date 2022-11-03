@@ -1,0 +1,100 @@
+version: "3.6"
+
+services:
+
+  ess-controller1:
+    image: ts-dockerhub.lsst.org/ess-controller:${CYCLE}
+    container_name: ess-controller
+    environment:
+      - RUN_ARG=1
+    tty: true
+    ipc: host
+    pid: host
+    privileged: true
+    networks:
+      rubin:
+        ipv4_address: "hexrot-ess01.cp.lsst.org"
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ess-controller101:
+    image: ts-dockerhub.lsst.org/ess-controller:${CYCLE}
+    container_name: ess-controller
+    environment:
+      - RUN_ARG=101
+    tty: true
+    ipc: host
+    pid: host
+    privileged: true
+    networks:
+      rubin:
+        ipv4_address: "mtdome-ess01.cp.lsst.org"
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ess-controller102:
+    image: ts-dockerhub.lsst.org/ess-controller:${CYCLE}
+    container_name: ess-controller
+    environment:
+      - RUN_ARG=102
+    tty: true
+    ipc: host
+    pid: host
+    privileged: true
+    networks:
+      rubin:
+        ipv4_address: "mtdome-ess02.cp.lsst.org"
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ess-controller103:
+    image: ts-dockerhub.lsst.org/ess-controller:${CYCLE}
+    container_name: ess-controller
+    environment:
+      - RUN_ARG=103
+    tty: true
+    ipc: host
+    pid: host
+    privileged: true
+    networks:
+      rubin:
+        ipv4_address: "mtdome-ess03.cp.lsst.org"
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ess-controller201:
+    image: ts-dockerhub.lsst.org/ess-controller:${CYCLE}
+    container_name: ess-controller
+    environment:
+      - RUN_ARG=201
+    tty: true
+    ipc: host
+    pid: host
+    privileged: true
+    networks:
+      rubin:
+        ipv4_address: "auxtel-ess01.cp.lsst.org"
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+networks:
+  default:
+    external:
+      name: rubin
+  rubin:
+    external: true
