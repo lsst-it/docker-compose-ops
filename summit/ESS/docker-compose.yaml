@@ -10,6 +10,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    privileged: true
     networks:
       rubin:
         ipv4_address: "hexrot-ess01.cp.lsst.org"
@@ -27,6 +28,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    privileged: true
     networks:
       rubin:
         ipv4_address: "mtdome-ess01.cp.lsst.org"
@@ -44,6 +46,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    privileged: true
     networks:
       rubin:
         ipv4_address: "mtdome-ess02.cp.lsst.org"
@@ -61,6 +64,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    privileged: true
     networks:
       rubin:
         ipv4_address: "mtdome-ess03.cp.lsst.org"
@@ -78,6 +82,7 @@ services:
     tty: true
     ipc: host
     pid: host
+    privileged: true
     networks:
       rubin:
         ipv4_address: "auxtel-ess01.cp.lsst.org"
