@@ -149,8 +149,6 @@ services:
     restart: on-failure
     networks:
       dds-network:
-        # Fix the IP address
-        ipv4_address: "139.229.178.XX"
     logging:
       driver: json-file
       options:
