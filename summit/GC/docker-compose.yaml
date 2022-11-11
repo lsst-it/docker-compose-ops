@@ -11,6 +11,11 @@ services:
       - RUN_ARG=101
       - OSPL_INFOFILE=/tmp/ospl-info-gc101.log
       - OSPL_ERRORFILE=/tmp/ospl-error-gc101.log
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
+      - MYS3_SECRET_KEY=${MYS3_SECRET_KEY}
+      - MYS3_ACCESS_KEY=${MYS3_ACCESS_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
@@ -33,6 +38,11 @@ services:
       - RUN_ARG=102
       - OSPL_INFOFILE=/tmp/ospl-info-gc102.log
       - OSPL_ERRORFILE=/tmp/ospl-error-gc102.log
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
+      - MYS3_SECRET_KEY=${MYS3_SECRET_KEY}
+      - MYS3_ACCESS_KEY=${MYS3_ACCESS_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
