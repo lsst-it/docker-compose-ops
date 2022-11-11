@@ -8,7 +8,6 @@ services:
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
       - LSST_SITE=summit
-      - LSST_DDS_INTERFACE=??
       - RUN_ARG=101
       - OSPL_INFOFILE=/tmp/ospl-info-gc101.log
       - OSPL_ERRORFILE=/tmp/ospl-error-gc101.log
@@ -18,9 +17,6 @@ services:
     tty: true
     ipc: host
     pid: host
-    networks:
-      dds-network:
-        ipv4_address: "139.229.17X.XX"
     logging:
       driver: json-file
       options:
@@ -33,7 +29,6 @@ services:
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
       - LSST_SITE=summit
-      - LSST_DDS_INTERFACE=??
       - RUN_ARG=102
       - OSPL_INFOFILE=/tmp/ospl-info-gc102.log
       - OSPL_ERRORFILE=/tmp/ospl-error-gc102.log
@@ -43,19 +38,8 @@ services:
     tty: true
     ipc: host
     pid: host
-    networks:
-      dds-network:
-        ipv4_address: "139.229.17X.XX"
     logging:
       driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
-
-
-networks:
-  default:
-    external:
-      name: dds-network
-  dds-network:
-    external: true
