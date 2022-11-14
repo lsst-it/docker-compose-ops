@@ -19,6 +19,8 @@ services:
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /net/project/:/net/project/
+      - /net/scratch/:/net/scratch/
     tty: true
     ipc: host
     pid: host
@@ -46,6 +48,8 @@ services:
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /net/project/:/net/project/
+      - /net/scratch/:/net/scratch/
     tty: true
     ipc: host
     pid: host
