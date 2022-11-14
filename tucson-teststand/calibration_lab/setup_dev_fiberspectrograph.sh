@@ -12,7 +12,7 @@ setup ts_xml -t current
 
 echo "# Running custom setups of repos"
 setup -j ts_config_ocs -r ~/develop/ts_config_ocs
-setup -j ts_FiberSpectrograph -r ~/develop/ts_FiberSpectrograph
+setup -j ts_fiberspectrograph -r ~/develop/ts_FiberSpectrograph
 
 echo '#Installing dependencies and declaring OSPL_URI'
 export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")

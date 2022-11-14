@@ -17,7 +17,7 @@ echo "Running custom setups of repos"
 setup -j ts_config_mtcalsys -r ~/develop/ts_config_mtcalsys
 
 echo 'Installing dependencies and declaring OSPL_URI'
-pip install -e develop/ts_TunableLaser/[dev]
+pip install -e develop/ts_TunableLaser/
 export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")
 
 echo "# Launching ts_TunableLaser CSC"
