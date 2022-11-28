@@ -2,8 +2,7 @@ version: "3.6"
 
 services:
 
-  electrometer1:
-    # index1, for use on Loonie with the AuxTel Illumination System
+  electrometer1: # index1, for use on Loonie with the AuxTel Illumination System
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer1
     environment:
@@ -23,13 +22,12 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
 
-  electrometer2:
-    # index2, for use on Toonie with the CIMACS
+  electrometer2: # index2, for use on Toonie with the CIMACS
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer2
     environment:
@@ -49,13 +47,12 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
 
-  electrometer3:
-    # index3, for use with the laser Fiber Coupler
+  electrometer3: # index3, for use with the laser Fiber Coupler
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer3
     environment:
@@ -75,13 +72,12 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
 
-  electrometer4:
-    # index4, for use with CIMACs, 2nd sensor
+  electrometer4: # index4, for use with CIMACs, 2nd sensor
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer4
     environment:
@@ -101,13 +97,12 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
 
-  electrometer5:
-    # index5, for use with CIMACs, 3rd sensor, placement not decided
+  electrometer5: # index5, for use with CIMACs, 3rd sensor, placement not decided
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer5
     environment:
@@ -127,13 +122,12 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
 
-  electrometer6:
-    # index 6, laser monitor
+  electrometer6: # index 6, laser monitor
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: electrometer6
     environment:
@@ -153,7 +147,7 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -174,13 +168,12 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
 
-  fiberspectrograph_broadband:
-    # index 3 to be used with the AuxTel Illumination System
+  fiberspectrograph_broadband: # index 3 to be used with the AuxTel Illumination System
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: fiberspectrograph_broadband
     environment:
@@ -205,13 +198,72 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
 
-  igusxaxis:
-    # Along the floor, generally index 1
+  fiberspectrograph_red: # index 2 to be used with the Main Telescope
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: fiberspectrograph_red
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=2
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/usb/bus:/dev/usb/bus
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  fiberspectrograph_blue: # index 1 to be used with the Main Telescope
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: fiberspectrograph_blue
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=1
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/usb/bus:/dev/usb/bus
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  igusxaxis: # Along the floor, generally index 1
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: igusxaxis
     environment:
@@ -228,13 +280,12 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
 
-  igusyaxis:
-    # Vertical, generally index 2
+  igusyaxis: # Vertical, generally index 2
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: igusyaxis
     environment:
@@ -251,7 +302,7 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -272,7 +323,7 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -293,7 +344,7 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -314,7 +365,7 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"

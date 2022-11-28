@@ -22,7 +22,7 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -49,7 +49,7 @@ services:
     ipc: host
     pid: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"

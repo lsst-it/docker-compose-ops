@@ -24,7 +24,7 @@ services:
     pid: host
     network_mode: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -46,7 +46,7 @@ services:
     pid: host
     network_mode: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
@@ -68,7 +68,7 @@ services:
     pid: host
     network_mode: host
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
