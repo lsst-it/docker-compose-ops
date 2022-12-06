@@ -8,19 +8,23 @@ services:
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
       - LSST_SITE=summit
-      - LSST_DDS_INTERFACE=??
       - RUN_ARG=101
       - OSPL_INFOFILE=/tmp/ospl-info-gc101.log
       - OSPL_ERRORFILE=/tmp/ospl-error-gc101.log
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
+      - MYS3_SECRET_KEY=${MYS3_SECRET_KEY}
+      - MYS3_ACCESS_KEY=${MYS3_ACCESS_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /net/project/:/net/project/
+      - /net/scratch/:/net/scratch/
     tty: true
     ipc: host
     pid: host
-    networks:
-      dds-network:
-        ipv4_address: "139.229.17X.XX"
+    network_mode: host
     logging:
       driver: json-file
       options:
@@ -33,29 +37,25 @@ services:
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
       - LSST_SITE=summit
-      - LSST_DDS_INTERFACE=??
       - RUN_ARG=102
       - OSPL_INFOFILE=/tmp/ospl-info-gc102.log
       - OSPL_ERRORFILE=/tmp/ospl-error-gc102.log
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
+      - MYS3_SECRET_KEY=${MYS3_SECRET_KEY}
+      - MYS3_ACCESS_KEY=${MYS3_ACCESS_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /net/project/:/net/project/
+      - /net/scratch/:/net/scratch/
     tty: true
     ipc: host
     pid: host
-    networks:
-      dds-network:
-        ipv4_address: "139.229.17X.XX"
+    network_mode: host
     logging:
       driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
-
-
-networks:
-  default:
-    external:
-      name: dds-network
-  dds-network:
-    external: true

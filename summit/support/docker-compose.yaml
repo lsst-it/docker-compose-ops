@@ -19,7 +19,7 @@ services:
       - LSST_DDS_ALIGNER=true
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
       - LSST_DDS_MERGE_POLICY=Merge
-      - OSPL_MASTER_PRIORITY=201
+      - OSPL_MASTER_PRIORITY=202
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
@@ -31,7 +31,7 @@ services:
     restart: on-failure
     networks:
       dds-network:
-        ipv4_address: "139.229.170.22"
+        ipv4_address: "139.229.170.30"
     logging:
       driver: "json-file"
       options:
@@ -103,7 +103,7 @@ services:
     restart: on-failure
     networks:
       dds-network:
-        ipv4_address: "139.229.170.30"
+        ipv4_address: "139.229.170.22"
     logging:
       driver: "json-file"
       options:
@@ -149,8 +149,6 @@ services:
     restart: on-failure
     networks:
       dds-network:
-        # Fix the IP address
-        ipv4_address: "139.229.178.XX"
     logging:
       driver: json-file
       options:
