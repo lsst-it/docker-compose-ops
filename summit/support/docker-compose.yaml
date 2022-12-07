@@ -6,7 +6,7 @@ version: "3.6"
 # ospl-love01 - love01.cp.lsst.org
 # ospl-love02 - love02.cp.lsst.org
 # ospl-atkeener - at-keener.cp.lsst.org
-# ospl-gcserver - ?
+# ospl-azar3 - ospl-azar3.cp.lsst.org
 
 services:
 
@@ -132,7 +132,7 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  ospl-gcserver:
+  ospl-azar3:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
     container_name: ospl-daemon
     environment:
@@ -149,6 +149,7 @@ services:
     restart: on-failure
     networks:
       dds-network:
+        ipv4_address: 139.229.170.27
     logging:
       driver: json-file
       options:
