@@ -6,8 +6,8 @@ services:
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: fiberspectrograph_broadband
     environment:
-      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
-      - LSST_SITE=${LSST_SITE}
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_SITE=summit
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=3
