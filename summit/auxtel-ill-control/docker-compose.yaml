@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
 
-  fiberspectrograph_broadband: # index 201 to be used with the AuxTel Illumination System
+  fiberspectrograph_broadband: # index 3 to be used with the AuxTel Illumination System
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: fiberspectrograph_broadband
     environment:
@@ -10,7 +10,7 @@ services:
       - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
-      - CSC_INDEX=201
+      - CSC_INDEX=3
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
