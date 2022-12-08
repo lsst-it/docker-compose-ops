@@ -149,7 +149,7 @@ services:
     restart: on-failure
     networks:
       dds-network:
-        ipv4_address: 139.229.170.27
+        ipv4_address: 139.229.178.27
     logging:
       driver: json-file
       options:
