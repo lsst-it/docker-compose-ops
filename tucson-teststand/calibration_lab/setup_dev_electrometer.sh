@@ -13,6 +13,7 @@ setup ts_tcpip -t current
 echo "# Running custom setups of repos"
 setup -j ts_electrometer -r ~/develop/ts_electrometer
 setup -j ts_config_ocs -r ~/develop/ts_config_ocs
+setup -j ts_utils -r ~/develop/ts_utils
 
 echo '# Installing dependencies and declaring OSPL_URI'
 pip install pyserial  # conda takes too long
