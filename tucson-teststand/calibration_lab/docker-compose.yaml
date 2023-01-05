@@ -11,6 +11,10 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=1
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
@@ -36,6 +40,10 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=2
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
@@ -61,6 +69,10 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=3
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
@@ -86,6 +98,10 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=4
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
@@ -111,6 +127,10 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=5
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
@@ -136,6 +156,10 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=6
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
