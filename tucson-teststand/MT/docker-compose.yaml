@@ -7,7 +7,6 @@ services:
     container_name: mtm1m3-sim
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
-      - LSST_DDS_ENABLE_AUTHLIST=1
       - LSST_SITE=${LSST_SITE}
       - OSPL_RELEASE=v6.10.4
       - OSPL_MASTER_PRIORITY=0
