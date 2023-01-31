@@ -46,3 +46,25 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
+  integration-tester-dev:
+    image: ts-dockerhub.lsst.org/integrationtests:${CYCLE}
+    container_name: integration-tester-dev
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - OSPL_INFOFILE=/tmp/ospl-info-inttester.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-inttester.log
+      - RUN_ARG=/bin/bash
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - /deploy-lsstts/develop:/home/saluser/develop
+      - /deploy-lsstts/reports:/home/saluser/robotframework_EFD/Reports
+      - ./setup_integration_tester.sh:/home/saluser/.startup.sh
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
