@@ -1,0 +1,34 @@
+version: "3.6"
+
+services:
+
+  fiberspectrograph_broadband: # index 3 to be used with the AuxTel Illumination System
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: fiberspectrograph_broadband
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_SITE=summit
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - CSC_INDEX=3
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
+    devices:
+      - /dev/usb/bus:/dev/usb/bus
+    privileged: true
+    tty: true
+    ipc: host
+    pid: host
+    network_mode: host
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"

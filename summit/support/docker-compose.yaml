@@ -6,7 +6,7 @@ version: "3.6"
 # ospl-love01 - love01.cp.lsst.org
 # ospl-love02 - love02.cp.lsst.org
 # ospl-atkeener - at-keener.cp.lsst.org
-# ospl-gcserver - ?
+# ospl-azar3 - ospl-azar3.cp.lsst.org
 
 services:
 
@@ -132,7 +132,7 @@ services:
         max-file: "5"
         max-size: "10m"
 
-  ospl-gcserver:
+  ospl-azar3:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
     container_name: ospl-daemon
     environment:
@@ -149,8 +149,31 @@ services:
     restart: on-failure
     networks:
       dds-network:
+        ipv4_address: 139.229.178.27
     logging:
       driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+  ospl-auxtel-ill-control:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    restart: on-failure
+    network_mode: host
+    logging:
+      driver: "json-file"
       options:
         max-file: "5"
         max-size: "10m"
