@@ -11,7 +11,7 @@ services:
     image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
     container_name: ospl-daemon
     environment:
-      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
       - LSST_DDS_INTERFACE=dds
       - LSST_DDS_ALIGNEE=Initial
       - LSST_DDS_ALIGNER=true
