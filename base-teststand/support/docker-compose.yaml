@@ -1,7 +1,7 @@
 version: "3.6"
 
 # The different daemons are meant for different Base machines:
-# ospl-azar01 - azar01.ls.lsst.org (master)
+# ospl-azar01 - azar01.ls.lsst.org (main)
 # ospl-love01 - love01.ls.lsst.org
 # ospl-telhw1 - tel-hw1.ls.lsst.org
 
