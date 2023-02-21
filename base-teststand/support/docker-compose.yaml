@@ -26,10 +26,8 @@ services:
     tty: true
     ipc: host
     pid: host
+    network_mode: host
     restart: on-failure
-    networks:
-      dds-network:
-        ipv4_address: "139.229.170.30"
     logging:
       driver: "json-file"
       options:
