@@ -17,8 +17,8 @@ services:
       - MYS3_ACCESS_KEY=${MYS3_ACCESS_KEY}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
-      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${DCO_OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
       - /net/project/:/net/project/
       - /net/scratch/:/net/scratch/
     tty: true
@@ -46,8 +46,8 @@ services:
       - MYS3_ACCESS_KEY=${MYS3_ACCESS_KEY}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
-      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${DCO_OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
       - /net/project/:/net/project/
       - /net/scratch/:/net/scratch/
     tty: true
@@ -75,8 +75,8 @@ services:
       - MYS3_ACCESS_KEY=${MYS3_ACCESS_KEY}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
-      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${DCO_OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
       - /net/project/:/net/project/
       - /net/scratch/:/net/scratch/
     tty: true
