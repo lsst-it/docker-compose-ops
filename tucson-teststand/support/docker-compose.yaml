@@ -61,8 +61,8 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
-      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
     pid: host
