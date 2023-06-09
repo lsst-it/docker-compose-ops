@@ -16,7 +16,7 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
     devices:
@@ -45,7 +45,7 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
     devices:
@@ -74,7 +74,7 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
     devices:
@@ -103,7 +103,7 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
     devices:
@@ -132,7 +132,7 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
     devices:
@@ -161,7 +161,7 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_electrometer.sh:/home/saluser/.setup_dev.sh
     devices:
@@ -185,7 +185,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_atmonochromator.sh:/home/saluser/.setup_dev.sh
     tty: true
@@ -211,7 +211,7 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
       - ~/develop:/home/saluser/develop
       - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
@@ -241,7 +241,7 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
       - ~/develop:/home/saluser/develop
       - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
@@ -271,7 +271,7 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
       - ~/develop:/home/saluser/develop
       - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
@@ -297,7 +297,7 @@ services:
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=1
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_linearstage.sh:/home/saluser/.setup_dev.sh
     tty: true
@@ -319,7 +319,7 @@ services:
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - CSC_INDEX=2
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_linearstage.sh:/home/saluser/.setup_dev.sh
     tty: true
@@ -340,7 +340,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_tunablelaser.sh:/home/saluser/.setup_dev.sh
     tty: true
@@ -361,7 +361,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_atwhitelight.sh:/home/saluser/.setup_dev.sh
     tty: true
@@ -382,7 +382,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ~/develop:/home/saluser/develop
       - ./setup_dev_cbp.sh:/home/saluser/.setup_dev.sh
     tty: true
