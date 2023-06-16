@@ -11,7 +11,7 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /net/scratch/tsrepos:/home/saluser/tsrepos
     tty: true
     ipc: host
@@ -31,9 +31,9 @@ services:
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /net/scratch/tsrepos:/home/saluser/tsrepos
-      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - ${DCO_OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
     ipc: host
     pid: host

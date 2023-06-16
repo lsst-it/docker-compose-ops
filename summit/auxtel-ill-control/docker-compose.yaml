@@ -18,7 +18,7 @@ services:
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
-      - ~/develop:/home/saluser/develop
+      - /home/saluser/develop:/home/saluser/develop
       - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
     devices:
       - /dev/usb/bus:/dev/usb/bus
