@@ -16,9 +16,9 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
-      - /home/saluser/develop:/home/saluser/develop
+      - /home/dco/develop:/home/saluser/develop
       - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
     devices:
       - /dev/usb/bus:/dev/usb/bus
