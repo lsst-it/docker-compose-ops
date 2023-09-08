@@ -15,9 +15,6 @@ setup -j ts_config_mtcalsys -r ~/develop/ts_config_mtcalsys
 setup -j ts_cbp -r ~/develop/ts_CBP
 setup -j ts_simactuators -r ~/develop/ts_simactuators
 
-# echo 'Installing dependencies and declaring OSPL_URI'
-export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")
-
 echo "# Launching ts_CBP CSC"
 python /home/saluser/develop/ts_CBP/bin/run_cbp
 # /bin/bash --rcfile /home/saluser/.bashrc
