@@ -27,6 +27,7 @@ services:
     container_name: atpneumatics-sim
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=base
       - OSPL_MASTER_PRIORITY=0
       - OSPL_INFOFILE=/tmp/ospl-info-atpneumatics.log
       - OSPL_ERRORFILE=/tmp/ospl-error-atpneumatics.log
