@@ -1,0 +1,31 @@
+version: "3.6"
+
+services:
+
+  atscheduler:
+    image: ts-dockerhub.lsst.org/scheduler:${CYCLE}
+    container_name: atscheduler
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_SITE=summit
+      - OSPL_INFOFILE=/tmp/ospl-info-atscheduler.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-atscheduler.log
+      - S3_ENDPOINT_URL=https://s3.cp.lsst.org
+      - INDEX=2
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - /net/scratch/scheduler:/home/saluser/rubin_sim_data
+      - /net/obs-env/:/net/obs-env
+      - /home/dco/ts_ddsconfig/python/lsst/ts/ddsconfig/data/config/ospl-shmem.xml:/opt/OpenSpliceDDS/V6.10.4/HDE/x86_64.linux/etc/config/ospl.xml
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
