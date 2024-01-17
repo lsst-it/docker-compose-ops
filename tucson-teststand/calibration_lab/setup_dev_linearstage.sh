@@ -21,12 +21,12 @@ echo "Setting up sal, salobj and scriptqueue"
 echo "Running custom setups of repos"
 
 setup -j ts_config_mtcalsys -r ~/develop/ts_config_mtcalsys
-setup -j ts_LinearStage -r ~/develop/ts_LinearStage
+setup -j ts_linearstage -r ~/develop/ts_linearstage
 
 echo 'Installing dependencies and declaring OSPL_URI'
-pip install develop/ts_LinearStage/
+pip install develop/ts_linearstage/
 export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")
 
-echo "# Launching ts_LinearStage with CSC_INDEX=$CSC_INDEX"
-python /home/saluser/develop/ts_LinearStage/bin/run_linearstage ${CSC_INDEX}
+echo "# Launching ts_linearstage with CSC_INDEX=$CSC_INDEX"
+python /home/saluser/develop/ts_linearstage/bin/run_linearstage ${CSC_INDEX}
 #/bin/bash --rcfile /home/saluser/.bashrc
