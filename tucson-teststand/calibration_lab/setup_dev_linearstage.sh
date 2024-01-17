@@ -29,4 +29,4 @@ export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.ge
 
 echo "# Launching ts_LinearStage with CSC_INDEX=$CSC_INDEX"
 python /home/saluser/develop/ts_LinearStage/bin/run_linearstage ${CSC_INDEX}
-/bin/bash --rcfile /home/saluser/.bashrc
+#/bin/bash --rcfile /home/saluser/.bashrc
