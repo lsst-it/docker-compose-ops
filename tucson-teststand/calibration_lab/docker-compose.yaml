@@ -393,3 +393,24 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
+
+  ledprojector:
+    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
+    container_name: ledprojector
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
+      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+    volumes:
+      - ${CAL_OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ~/develop:/home/saluser/develop
+      - ./setup_dev_ledprojector.sh:/home/saluser/.setup_dev.sh
+    tty: true
+    ipc: host
+    pid: host
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
