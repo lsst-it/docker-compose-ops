@@ -24,8 +24,5 @@ services:
         max-size: "10m"
 
 networks:
-  default:
-    external:
-      name: dds-network
   dds-network:
     external: true
