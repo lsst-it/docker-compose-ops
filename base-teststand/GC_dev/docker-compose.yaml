@@ -1,5 +1,3 @@
-version: "3.6"
-
 services:
   gc-dev:
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
