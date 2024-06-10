@@ -1,0 +1,28 @@
+services:
+  ospl-daemon:
+    image: ts-dockerhub.lsst.org/ospl-daemon:${CYCLE}
+    container_name: ospl-daemon
+    environment:
+      - LSST_DDS_PARTITION_PREFIX=summit
+      - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
+      - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
+    volumes:
+      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
+      - ${DCO_OSPL_SHMEM_DEBUG_CONFIG}:${OSPL_MOUNT_POINT}
+    tty: true
+    ipc: host
+    pid: host
+    restart: on-failure
+    networks:
+      dds-network:
+        ipv4_address: "139.229.170.24"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+networks:
+  dds-network:
+    external: true

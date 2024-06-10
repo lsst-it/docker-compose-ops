@@ -21,8 +21,7 @@ services:
       - /home/dco/develop:/home/saluser/develop
       - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
     devices:
-      - /dev/usb/bus:/dev/usb/bus
-    privileged: true
+      - /dev/bus/usb:/dev/bus/usb
     tty: true
     ipc: host
     pid: host
@@ -52,8 +51,7 @@ services:
       - ${DCO_OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
     devices:
-      - /dev/usb/bus:/dev/usb/bus
-    privileged: true
+      - /dev/bus/usb:/dev/bus/usb
     tty: true
     ipc: host
     pid: host
