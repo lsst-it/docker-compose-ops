@@ -3,6 +3,7 @@
 # Source this file when starting the container to set it up
 echo "Running setup for environment for ts_LinearStage CSCs to support igusxaxis and igusyaxis containers"
 source /home/saluser/.setup_salobj.sh
+# conda install -y zaber-motion
 
 setup ts_config_atcalsys -t current
 setup ts_config_attcs -t current
@@ -21,10 +22,11 @@ echo "Setting up sal, salobj and scriptqueue"
 echo "Running custom setups of repos"
 
 setup -j ts_config_mtcalsys -r ~/develop/ts_config_mtcalsys
-setup -j ts_linearstage -r ~/develop/ts_linearstage
+setup -kr ~/develop/ts_linearstage
 
 echo 'Installing dependencies and declaring OSPL_URI'
-pip install develop/ts_linearstage/
+pip install --no-build-isolation --no-deps -e develop/ts_linearstage/
+# Add dependency until installed via ts-develop
 export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")
 
 echo "# Launching ts_linearstage with CSC_INDEX=$CSC_INDEX"
