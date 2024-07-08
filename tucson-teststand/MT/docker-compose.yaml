@@ -1,5 +1,3 @@
-version: "3.6"
-
 services:
 
   mtm1m3-sim:
