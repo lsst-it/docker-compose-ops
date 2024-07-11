@@ -5,6 +5,7 @@ services:
     environment:
       - LSST_DDS_PARTITION_PREFIX=summit
       - LSST_DDS_RESPONSIVENESS_TIMEOUT=15s
+      - LSST_DDS_INTERFACE=dds
       - OSPL_INFOFILE=/tmp/ospl-info-daemon.log
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
     volumes:
@@ -14,15 +15,9 @@ services:
     ipc: host
     pid: host
     restart: on-failure
-    networks:
-      dds-network:
-        ipv4_address: 139.229.178.27
+    network_mode: host
     logging:
       driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
-
-networks:
-  dds-network:
-    external: true
