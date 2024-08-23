@@ -5,6 +5,7 @@ services:
     environment:
       - LSST_DDS_PARTITION_PREFIX=tucson
       - LSST_SITE=tucson
+      - LSST_DDS_INTERFACE=dds
       - OSPL_INFOFILE=/tmp/ospl-info-fiberspectrograph2.log
       - OSPL_ERRORFILE=/tmp/ospl-error-fiberspectrograph2.log
       - RUN_ARG=2
