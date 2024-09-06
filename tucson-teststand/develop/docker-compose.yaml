@@ -10,25 +10,6 @@ services:
       - LSST_SITE=${LSST_SITE}
       - OSPL_INFOFILE=/tmp/ospl-info-develop.log
       - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
-    volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
-      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
-    tty: true
-    ipc: host
-    pid: host
-    logging:
-      driver: json-file
-      options:
-        max-file: "5"
-        max-size: "10m"
-  lfa-dev-env:
-    image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
-    container_name: lfa-dev-env
-    environment:
-      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
-      - LSST_SITE=${LSST_SITE}
-      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
       - S3_ENDPOINT_URL=https://s3.tu.lsst.org
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
@@ -37,7 +18,7 @@ services:
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
-      - /deploy-lsstts/develop:/home/saluser/develop
+      - /home/dco/develop:/home/saluser/develop
     tty: true
     ipc: host
     pid: host
