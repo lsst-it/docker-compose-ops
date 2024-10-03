@@ -1,7 +1,7 @@
 services:
 
   atmcs-sim:
-    image: ts-dockerhub.lsst.org/atmcs_sim:${CYCLE}
+    image: ts-dockerhub.lsst.org/atmcs_sim:${CYCLE}.000
     container_name: atmcs-sim
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
@@ -22,7 +22,7 @@ services:
         max-size: "10m"
 
   atpneumatics-sim:
-    image: ts-dockerhub.lsst.org/at_pneumatics_sim:${CYCLE}
+    image: ts-dockerhub.lsst.org/at_pneumatics_sim:${CYCLE}.000
     container_name: atpneumatics-sim
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
