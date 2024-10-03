@@ -5,6 +5,7 @@ services:
     container_name: atmcs-sim
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_MASTER_PRIORITY=0
       - OSPL_INFOFILE=/tmp/ospl-info-atmcs.log
       - OSPL_ERRORFILE=/tmp/ospl-error-atmcs.log
@@ -25,6 +26,7 @@ services:
     container_name: atpneumatics-sim
     environment:
       - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
+      - LSST_SITE=${LSST_SITE}
       - OSPL_MASTER_PRIORITY=0
       - OSPL_INFOFILE=/tmp/ospl-info-atpneumatics.log
       - OSPL_ERRORFILE=/tmp/ospl-error-atpneumatics.log
