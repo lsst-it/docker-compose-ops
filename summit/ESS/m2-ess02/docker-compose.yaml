@@ -2,10 +2,9 @@ services:
   ess-controller:
     image: lsstts/ess-controller-aarch64:${CYCLE}.000
     container_name: ess-controller
-    volumes:
-      - /dev:/dev
+    devices:
+      - /dev/ttyAMA2:/dev/serial1
     tty: true
-    privileged: true
     network_mode: host
     restart: always
     logging:
