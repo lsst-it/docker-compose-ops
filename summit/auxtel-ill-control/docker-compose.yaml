@@ -1,7 +1,4 @@
-version: "3.6"
-
 services:
-
   fiberspectrograph_broadband_develop: # index 3 to be used with the AuxTel Illumination System
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: fiberspectrograph_broadband_dev
