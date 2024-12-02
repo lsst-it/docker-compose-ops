@@ -1,3 +1,4 @@
+name: fiberspectrograph
 services:
   fiberspectrograph_red:
     image: ts-dockerhub.lsst.org/fiberspectrograph:${CYCLE}
