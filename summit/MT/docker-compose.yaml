@@ -1,22 +1,18 @@
-version: "3.6"
-
 services:
 
   mtmount:
     image: ts-dockerhub.lsst.org/mtmount:${CYCLE}
     container_name: mtmount
     environment:
-      - LSST_DDS_PARTITION_PREFIX=summit
-      - LSST_SITE=summit
-      - OSPL_MASTER_PRIORITY=0
-      - OSPL_INFOFILE=/tmp/ospl-info-mtmount.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-mtmount.log
-    volumes:
-      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
-      - ${DCO_OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
+      - LSST_TOPIC_SUBNAME=${LSST_TOPIC_SUBNAME}
+      - LSST_KAFKA_BROKER_ADDR=${LSST_KAFKA_BROKER_ADDR}
+      - LSST_SCHEMA_REGISTRY_URL=${LSST_SCHEMA_REGISTRY_URL}
+      - LSST_KAFKA_REPLICATION_FACTOR=${LSST_KAFKA_REPLICATION_FACTOR}
+      - LSST_KAFKA_SECURITY_USERNAME=${LSST_KAFKA_SECURITY_USERNAME}
+      - LSST_KAFKA_SECURITY_PASSWORD=${LSST_KAFKA_SECURITY_PASSWORD}
+      - LSST_KAFKA_SECURITY_PROTOCOL=${LSST_KAFKA_SECURITY_PROTOCOL}
+      - LSST_SITE=${LSST_SITE}
     tty: true
-    ipc: host
-    pid: host
     logging:
       driver: "json-file"
       options:

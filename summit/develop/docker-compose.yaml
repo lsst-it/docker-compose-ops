@@ -1,21 +1,20 @@
-version: "3.6"
-
 services:
 
   develop-env:
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: develop-env
     environment:
-      - LSST_DDS_PARTITION_PREFIX=summit
-      - LSST_SITE=summit
-      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - LSST_TOPIC_SUBNAME=${LSST_TOPIC_SUBNAME}
+      - LSST_KAFKA_BROKER_ADDR=${LSST_KAFKA_BROKER_ADDR}
+      - LSST_SCHEMA_REGISTRY_URL=${LSST_SCHEMA_REGISTRY_URL}
+      - LSST_KAFKA_REPLICATION_FACTOR=${LSST_KAFKA_REPLICATION_FACTOR}
+      - LSST_KAFKA_SECURITY_USERNAME=${LSST_KAFKA_SECURITY_USERNAME}
+      - LSST_KAFKA_SECURITY_PASSWORD=${LSST_KAFKA_SECURITY_PASSWORD}
+      - LSST_KAFKA_SECURITY_PROTOCOL=${LSST_KAFKA_SECURITY_PROTOCOL}
+      - LSST_SITE=${LSST_SITE}
     volumes:
-      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /net/scratch/tsrepos:/home/saluser/tsrepos
     tty: true
-    ipc: host
-    pid: host
     logging:
       driver: "json-file"
       options:
@@ -26,17 +25,17 @@ services:
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: develop-env2
     environment:
-      - LSST_DDS_PARTITION_PREFIX=summit
-      - LSST_SITE=summit
-      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - LSST_TOPIC_SUBNAME=${LSST_TOPIC_SUBNAME}
+      - LSST_KAFKA_BROKER_ADDR=${LSST_KAFKA_BROKER_ADDR}
+      - LSST_SCHEMA_REGISTRY_URL=${LSST_SCHEMA_REGISTRY_URL}
+      - LSST_KAFKA_REPLICATION_FACTOR=${LSST_KAFKA_REPLICATION_FACTOR}
+      - LSST_KAFKA_SECURITY_USERNAME=${LSST_KAFKA_SECURITY_USERNAME}
+      - LSST_KAFKA_SECURITY_PASSWORD=${LSST_KAFKA_SECURITY_PASSWORD}
+      - LSST_KAFKA_SECURITY_PROTOCOL=${LSST_KAFKA_SECURITY_PROTOCOL}
+      - LSST_SITE=${LSST_SITE}
     volumes:
-      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /net/scratch/tsrepos:/home/saluser/tsrepos
-      - ${DCO_OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
     tty: true
-    ipc: host
-    pid: host
     logging:
       driver: "json-file"
       options:
