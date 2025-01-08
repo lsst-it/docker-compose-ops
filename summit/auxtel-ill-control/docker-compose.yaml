@@ -4,25 +4,27 @@ services:
     image: ts-dockerhub.lsst.org/develop-env:${CYCLE}${rev}
     container_name: fiberspectrograph_broadband_dev
     environment:
-      - LSST_DDS_PARTITION_PREFIX=summit
-      - LSST_SITE=summit
-      - OSPL_INFOFILE=/tmp/ospl-info-develop.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-develop.log
+      - LSST_TOPIC_SUBNAME=${LSST_TOPIC_SUBNAME}
+      - LSST_KAFKA_BROKER_ADDR=${LSST_KAFKA_BROKER_ADDR}
+      - LSST_SCHEMA_REGISTRY_URL=${LSST_SCHEMA_REGISTRY_URL}
+      - LSST_KAFKA_REPLICATION_FACTOR=${LSST_KAFKA_REPLICATION_FACTOR}
+      - LSST_KAFKA_SECURITY_USERNAME=${LSST_KAFKA_SECURITY_USERNAME}
+      - LSST_KAFKA_SECURITY_PASSWORD=${LSST_KAFKA_SECURITY_PASSWORD}
+      - LSST_KAFKA_SECURITY_PROTOCOL=${LSST_KAFKA_SECURITY_PROTOCOL}
+      - LSST_SITE=${LSST_SITE}
       - CSC_INDEX=3
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
+      - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
     volumes:
-      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
       - /home/dco/develop:/home/saluser/develop
       - ./setup_dev_fiberspectrograph.sh:/home/saluser/.setup_dev.sh
     devices:
       - /dev/bus/usb:/dev/bus/usb
     tty: true
-    ipc: host
-    pid: host
     network_mode: host
     logging:
       driver: json-file
@@ -34,10 +36,14 @@ services:
     image: ts-dockerhub.lsst.org/fiberspectrograph:${CYCLE}
     container_name: fiberspectrograph_broadband
     environment:
-      - LSST_DDS_PARTITION_PREFIX=summit
-      - LSST_SITE=summit
-      - OSPL_INFOFILE=/tmp/ospl-info-fiberspectrograph3.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-fiberspectrograph3.log
+      - LSST_TOPIC_SUBNAME=${LSST_TOPIC_SUBNAME}
+      - LSST_KAFKA_BROKER_ADDR=${LSST_KAFKA_BROKER_ADDR}
+      - LSST_SCHEMA_REGISTRY_URL=${LSST_SCHEMA_REGISTRY_URL}
+      - LSST_KAFKA_REPLICATION_FACTOR=${LSST_KAFKA_REPLICATION_FACTOR}
+      - LSST_KAFKA_SECURITY_USERNAME=${LSST_KAFKA_SECURITY_USERNAME}
+      - LSST_KAFKA_SECURITY_PASSWORD=${LSST_KAFKA_SECURITY_PASSWORD}
+      - LSST_KAFKA_SECURITY_PROTOCOL=${LSST_KAFKA_SECURITY_PROTOCOL}
+      - LSST_SITE=${LSST_SITE}
       - RUN_ARG=3
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
@@ -45,14 +51,10 @@ services:
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
       - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
     volumes:
-      - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
-      - ${DCO_OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
     devices:
       - /dev/bus/usb:/dev/bus/usb
     tty: true
-    ipc: host
-    pid: host
     network_mode: host
     logging:
       driver: json-file
