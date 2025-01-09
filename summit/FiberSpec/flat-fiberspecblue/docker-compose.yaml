@@ -1,0 +1,30 @@
+services:
+  fiberspectrograph_blue:
+    image: ts-dockerhub.lsst.org/fiberspectrograph:${CYCLE}
+    container_name: fiberspectrograph_blue
+    environment:
+      - LSST_TOPIC_SUBNAME=${LSST_TOPIC_SUBNAME}
+      - LSST_KAFKA_BROKER_ADDR=${LSST_KAFKA_BROKER_ADDR}
+      - LSST_SCHEMA_REGISTRY_URL=${LSST_SCHEMA_REGISTRY_URL}
+      - LSST_KAFKA_REPLICATION_FACTOR=${LSST_KAFKA_REPLICATION_FACTOR}
+      - LSST_KAFKA_SECURITY_USERNAME=${LSST_KAFKA_SECURITY_USERNAME}
+      - LSST_KAFKA_SECURITY_PASSWORD=${LSST_KAFKA_SECURITY_PASSWORD}
+      - LSST_KAFKA_SECURITY_PROTOCOL=${LSST_KAFKA_SECURITY_PROTOCOL}
+      - LSST_SITE=${LSST_SITE}
+      - RUN_ARG=102
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
+      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
+      - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
+    volumes:
+      - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+    tty: true
+    network_mode: host
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
