@@ -13,3 +13,18 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
+  
+  audiotrigger-controller:
+    image: lsstts/audiotrigger-controller-aarch64:${CYCLE}${rev}
+    container_name: audiotrigger-controller
+    volumes:
+      - /dev:/dev
+    tty: true
+    privileged: true
+    network_mode: host
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
