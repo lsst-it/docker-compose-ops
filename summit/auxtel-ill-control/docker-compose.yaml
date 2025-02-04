@@ -15,8 +15,6 @@ services:
       - CSC_INDEX=3
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
-      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
       - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
     volumes:
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
@@ -47,8 +45,6 @@ services:
       - RUN_ARG=3
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
-      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
       - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
     volumes:
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0

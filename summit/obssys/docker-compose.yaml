@@ -14,8 +14,6 @@ services:
       - INDEX=2
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-      - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
-      - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ${DCO_OSPL_SHMEM_SOCKET_DIR}:/tmp/
       - /net/scratch/scheduler:/home/saluser/rubin_sim_data

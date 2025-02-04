@@ -37,8 +37,6 @@ services:
       - OSPL_ERRORFILE=/tmp/ospl-error-daemon.log
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
-      - MYS3_SECRET_KEY=${MYS3_SECRET_KEY}
-      - MYS3_ACCESS_KEY=${MYS3_ACCESS_KEY}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
     volumes:
       - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
