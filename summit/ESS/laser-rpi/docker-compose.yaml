@@ -15,7 +15,7 @@ services:
         max-size: "10m"
   
   audiotrigger-controller:
-    image: lsstts/audiotrigger-controller-aarch64:${CYCLE}.000
+    image: lsstts/audiotrigger-controller-aarch64:${CYCLE}${audiotrigger_rev}
     container_name: audiotrigger-controller
     volumes:
       - /dev:/dev
