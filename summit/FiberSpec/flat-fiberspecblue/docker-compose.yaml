@@ -17,12 +17,10 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - S3_ENDPOINT_URL=${S3_ENDPOINT_URL}
     volumes:
-(??)
       - /usr/local/lib/libavs.so.0.2.0:/usr/local/lib/libavs.so.0.2.0
     devices:
       - /dev/bus/usb:/dev/bus/usb
     tty: true
-(??)
     network_mode: host
     logging:
       driver: json-file
