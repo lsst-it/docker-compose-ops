@@ -1,0 +1,17 @@
+services:
+  vent_controller:
+    image: lsstts/vents-controller-aarch64:${CYCLE}${rev}
+    container_name: vent_controller
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:17311:23"
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    group_add:
+      - "990"  # i2c group
+    command: ["--modbus-host", "auxtel-vent-fan01.cp.lsst.org"]
+    logging:
+      driver: json-file
+      options:
+        max-file: "5"
+        max-size: "10m"
