@@ -4,6 +4,9 @@ The `setup.env` file must be sourced before running any docker-compose commands 
 
 The main summit deployment uses the `support` and `EAS` directories. The `support` directory handles the OSPL daemons. The `EAS` directory handles the WeatherStation.
 
+The `auxtel-vent-gates` directory contains a docker-compose specification for the vent gate / ATDome exhaust 
+fan control Raspberry Pi.
+
 The `ESS` directory is currently not used, and contain provisionary deployment descriptors for the ESS Controller docker images for the Raspberry Pi devices at the summit.
 
 The `MT` directory is currently not used, but will be once the CSCs supported there move to the production domain.
