@@ -19,6 +19,7 @@ services:
     container_name: audiotrigger-controller
     volumes:
       - /dev:/dev
+      - /usr/share/alsa:/usr/share/alsa
     group_add:
       - audio
     tty: true
