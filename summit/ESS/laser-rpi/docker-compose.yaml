@@ -19,6 +19,8 @@ services:
     container_name: audiotrigger-controller
     volumes:
       - /dev:/dev
+    group_add:
+      - audio
     tty: true
     privileged: true
     network_mode: host
