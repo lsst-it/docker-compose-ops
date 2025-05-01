@@ -20,6 +20,8 @@ services:
     volumes:
       - /dev:/dev
       - /usr/share/alsa:/usr/share/alsa
+    devices:
+      - "/dev/snd:/dev/snd"
     group_add:
       - 63
     tty: true
