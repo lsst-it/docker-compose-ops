@@ -21,7 +21,7 @@ services:
       - /dev:/dev
       - /usr/share/alsa:/usr/share/alsa
     group_add:
-      - audio
+      - 63
     tty: true
     privileged: true
     network_mode: host
@@ -32,4 +32,4 @@ services:
         max-file: "5"
         max-size: "10m"
     environment:
-      RUN_ARG: "--disable-microphone"
+      RUN_ARG: ""
