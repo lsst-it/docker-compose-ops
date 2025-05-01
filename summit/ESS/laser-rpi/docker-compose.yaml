@@ -32,4 +32,4 @@ services:
         max-file: "5"
         max-size: "10m"
     environment:
-      RUN_ARG: ""
+      RUN_ARG: "--disable-microphone"
