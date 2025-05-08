@@ -23,6 +23,7 @@ services:
       - /dev/bus/usb:/dev/bus/usb
     tty: true
     network_mode: host
+    restart: unless-stopped
     logging:
       driver: json-file
       options:
