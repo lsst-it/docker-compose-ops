@@ -73,24 +73,6 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
-  
-    ess-controller2:
-    image: ts-dockerhub.lsst.org/ess-controller:${CYCLE}
-    container_name: ess-controller
-    environment:
-      - RUN_ARG=2
-    tty: true
-    ipc: host
-    pid: host
-    privileged: true
-    networks:
-      rubin:
-        ipv4_address: "m2hex-ess01.cp.lsst.org"
-    logging:
-      driver: json-file
-      options:
-        max-file: "5"
-        max-size: "10m"
 
   ess-controller201:
     image: ts-dockerhub.lsst.org/ess-controller:${CYCLE}
