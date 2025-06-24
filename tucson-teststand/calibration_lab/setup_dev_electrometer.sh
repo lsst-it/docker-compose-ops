@@ -15,12 +15,10 @@ setup -j ts_electrometer -r ~/develop/ts_electrometer
 setup -j ts_config_ocs -r ~/develop/ts_config_ocs
 setup -j ts_utils -r ~/develop/ts_utils
 
-echo '# Installing dependencies and declaring OSPL_URI'
 pip install pyserial  # conda takes too long
-export OSPL_URI=$(python -c "from lsst.ts import ddsconfig; print( (ddsconfig.get_config_dir() / 'ospl-shmem.xml').as_uri())")
 echo 'Setting up LFA'
 export S3_ENDPOINT_URL=https://s3.tu.lsst.org
 
 echo "# Launching electrometer with CSC_INDEX=$CSC_INDEX"
-python /home/saluser/develop/ts_electrometer/bin/run_electrometer ${CSC_INDEX} 
+python /home/saluser/develop/ts_electrometer/bin/run_electrometer ${CSC_INDEX}
 #/bin/bash --rcfile /home/saluser/.bashrc
