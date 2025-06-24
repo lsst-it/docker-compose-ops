@@ -17,8 +17,6 @@ services:
       - MYS3_ACCESS_KEY=${AWS_ACCESS_KEY_ID}
       - MYS3_SECRET_KEY=${AWS_SECRET_ACCESS_KEY}
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
-      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
       - /home/dco/develop:/home/saluser/develop
     tty: true
     ipc: host
@@ -32,15 +30,17 @@ services:
     image: ts-dockerhub.lsst.org/integrationtests:${CYCLE}
     container_name: integration-tester-dev
     environment:
-      - LSST_DDS_PARTITION_PREFIX=${SITE_PARTITION_PREFIX}
-      - OSPL_INFOFILE=/tmp/ospl-info-inttester.log
-      - OSPL_ERRORFILE=/tmp/ospl-error-inttester.log
+      - LSST_TOPIC_SUBNAME=${LSST_TOPIC_SUBNAME}
+      - LSST_KAFKA_BROKER_ADDR=${LSST_KAFKA_BROKER_ADDR}
+      - LSST_SCHEMA_REGISTRY_URL=${LSST_SCHEMA_REGISTRY_URL}
+      - LSST_KAFKA_SECURITY_USERNAME=${LSST_KAFKA_SECURITY_USERNAME}
+      - LSST_KAFKA_SECURITY_PASSWORD=${LSST_KAFKA_SECURITY_PASSWORD}
+      - LSST_KAFKA_SECURITY_PROTOCOL=${LSST_KAFKA_SECURITY_PROTOCOL}
+      - LSST_SITE=${LSST_SITE}
       - RUN_ARG=/bin/bash
     volumes:
-      - ${OSPL_SHMEM_SOCKET_DIR}:/tmp/
-      - ${OSPL_SHMEM_CONFIG}:${OSPL_MOUNT_POINT}
-      - /deploy-lsstts/develop:/home/saluser/develop
-      - /deploy-lsstts/reports:/home/saluser/robotframework_EFD/Reports
+      - /home/dco/develop:/home/saluser/develop
+      - /home/dco/reports:/home/saluser/robotframework_EFD/Reports
       - ./setup_integration_tester.sh:/home/saluser/.startup.sh
     tty: true
     ipc: host
