@@ -1,6 +1,6 @@
 services:
   ess-controller:
-    image: lsstts/ess-controller-aarch64:${CYCLE}.000
+    image: lsstts/ess-controller-aarch64:${CYCLE}${laser-rpi_rev}
     container_name: ess-controller
     volumes:
       - /dev:/dev
