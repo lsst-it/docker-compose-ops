@@ -1,6 +1,6 @@
 services:
   ess-controller:
-    image: lsstts/ess-controller-aarch64:${CYCLE}${m2-ess02_rev}
+    image: lsstts/ess-controller-aarch64:${CYCLE}${m2_ess02_rev}
     container_name: ess-controller
     devices:
       - /dev/ttyAMA2:/dev/serial1
