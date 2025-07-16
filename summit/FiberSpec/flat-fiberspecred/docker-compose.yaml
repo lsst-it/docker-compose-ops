@@ -29,4 +29,7 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
-
+    device_cgroup_rules:
+      - "c 189:* rwm"
+    group_add:
+      - dialout
