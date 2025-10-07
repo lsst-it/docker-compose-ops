@@ -1,6 +1,6 @@
 services:
   ess-controller:
-    image: lsstts/ess-controller-aarch64:${CYCLE}.000
+    image: lsstts/ess-controller-aarch64:${CYCLE}${laser_rpi_rev}
     container_name: ess-controller
     volumes:
       - /dev:/dev
@@ -19,6 +19,10 @@ services:
     container_name: audiotrigger-controller
     volumes:
       - /dev:/dev
+      - /usr/share/alsa:/usr/share/alsa
+      - /etc/asound.conf:/etc/asound.conf:ro
+    group_add:
+      - 63
     tty: true
     privileged: true
     network_mode: host
@@ -28,3 +32,5 @@ services:
       options:
         max-file: "5"
         max-size: "10m"
+    environment:
+      RUN_ARG: "--lal-log-port=18840"

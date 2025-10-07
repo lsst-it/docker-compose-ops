@@ -1,10 +1,11 @@
 services:
   ess-controller:
-    image: lsstts/ess-controller-aarch64:${CYCLE}${camera_ess01_rev}
+    image: lsstts/ess-controller-aarch64:${CYCLE}${m2hex_ess01_rev}
     container_name: ess-controller
-    devices:
-      - /dev/ttyAMA2:/dev/serial1
+    volumes:
+      - /dev:/dev
     tty: true
+    privileged: true
     network_mode: host
     restart: always
     logging:

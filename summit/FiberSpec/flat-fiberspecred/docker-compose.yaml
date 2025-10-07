@@ -23,9 +23,13 @@ services:
       - /dev/bus/usb:/dev/bus/usb
     tty: true
     network_mode: host
+    restart: unless-stopped
     logging:
       driver: json-file
       options:
         max-file: "5"
         max-size: "10m"
-
+    device_cgroup_rules:
+      - "c 189:* rwm"
+    group_add:
+      - dialout
